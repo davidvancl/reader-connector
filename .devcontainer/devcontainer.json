@@ -1,0 +1,9 @@
+{
+	"name": "Dev container with definition in docker-compose",
+	"dockerComposeFile": [
+		"./docker-compose.yml"
+	],
+	"service": "RWE Service",
+	"workspaceFolder": "/ReaderWebExtension",
+	"remoteUser": "devuser"
+}

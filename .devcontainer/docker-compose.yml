@@ -1,13 +1,13 @@
 version: '3.8'
 services:
-  gunnik:
+  reader-connector:
     build: .
     environment:
       - WATCHPACK_POLLING=true
     ports:
       - "8086:8086"
     volumes:
-      - ../:/ReaderWebExtension
+      - ../:/reader-connector
       - ~/.gitconfig:/root/.gitconfig:z
     stdin_open: true
     tty: true

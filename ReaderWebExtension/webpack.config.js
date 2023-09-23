@@ -5,8 +5,8 @@ module.exports = env => {
     return {
         entry: {
             './artefact': './src/Index.tsx',
-            './background/background': './src/background/background.ts',
-            './content/content': './src/content/content.ts',
+            './background/background': './src/background/background.js',
+            './content/content': './src/content/content.js',
         },
         output: {
             path: path.resolve(__dirname, 'build'),
@@ -47,7 +47,7 @@ module.exports = env => {
                     { from: env.chrome ? "./src/manifest-chrome.json" : "./src/manifest.json", to: "./manifest.json" },
                     { from: "./public/index.html", to: "./index.html" }
                 ],
-            }),
+            })
         ],
     }
 }

@@ -20,6 +20,6 @@ RUN useradd $CONTAINER_USER
 
 RUN usermod -G $CONTAINER_GROUP $CONTAINER_USER
 
-WORKDIR /ReaderWebExtension
+WORKDIR /reader-connector
 
 CMD ["/bin/sh", "-c", "bash"]

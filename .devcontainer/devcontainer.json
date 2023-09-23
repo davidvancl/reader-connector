@@ -3,7 +3,7 @@
 	"dockerComposeFile": [
 		"./docker-compose.yml"
 	],
-	"service": "RWE Service",
-	"workspaceFolder": "/ReaderWebExtension",
+	"service": "reader-connector",
+	"workspaceFolder": "/reader-connector",
 	"remoteUser": "devuser"
 }

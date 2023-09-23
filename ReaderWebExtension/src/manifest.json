@@ -14,13 +14,13 @@
         "activeTab"
     ],
     "host_permissions": [
-        "<all_urls>"
+        "<all_urls>",
+        "*://*/*"
     ],
     "content_scripts": [
         {
             "matches": [
-                "http://*/*",
-                "https://*/*"
+                "<all_urls>"
             ],
             "js": [
                 "content/content.js"
@@ -36,5 +36,8 @@
     "action": {
         "default_title": "Reader connector extension",
         "default_popup": "index.html"
+    },
+    "content_security_policy": {
+        "extension_pages": "script-src 'self'; object-src 'self'"
     }
 }

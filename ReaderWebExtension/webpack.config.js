@@ -5,8 +5,8 @@ module.exports = env => {
     return {
         entry: {
             './artefact': './src/Index.tsx',
-            './background/background': './src/background/background.js',
-            './content/content': './src/content/content.js',
+            './background/background': './src/background/background.ts',
+            './content/content': './src/content/content.ts',
         },
         output: {
             path: path.resolve(__dirname, 'build'),
@@ -39,6 +39,7 @@ module.exports = env => {
             extensions: ['.tsx', '.ts', '.jsx', '.js'],
             alias: {
                 "@components": path.resolve(__dirname, "src/components"),
+                "@utils": path.resolve(__dirname, "src/utils"),
             }
         },
         plugins: [

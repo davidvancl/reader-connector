@@ -5,10 +5,10 @@
     "manifest_version": 3,
     "description": "Web extension allows connect from mobile app and use it as bar code reader",
     "options_ui": {
-        "page": "index.html"
+        "page": "index.html",
+        "browser_style": false
     },
     "permissions": [
-        "tabs",
         "storage",
         "scripting",
         "activeTab"
@@ -16,6 +16,9 @@
     "host_permissions": [
         "<all_urls>",
         "*://*/*"
+    ],
+    "optional_permissions": [
+        "<all_urls>"
     ],
     "content_scripts": [
         {

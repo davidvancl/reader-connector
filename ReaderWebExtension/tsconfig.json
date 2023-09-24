@@ -19,6 +19,9 @@
         "paths": {
             "@components/*": [
                 "components/*"
+            ],
+            "@utils/*": [
+                "utils/*"
             ]
         }
     },

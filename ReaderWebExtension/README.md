@@ -5,6 +5,7 @@
 - Babel
 - ESLint
 - Prettier
+- Webextension-polyfill
 
 ## Background worker
 - src/background/background.ts
@@ -16,4 +17,4 @@
 
 ## Application [extension]
 - src/*
-- The app itself. It should not be mixed with background and content scripts. The application is written in react and is used to set up the gun.js linking technology.
+- The app itself. It should not be mixed with background and content scripts. The application is written in React.

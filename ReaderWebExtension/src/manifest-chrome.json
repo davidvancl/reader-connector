@@ -5,10 +5,10 @@
     "manifest_version": 3,
     "description": "Web extension allows connect from mobile app and use it as bar code reader",
     "options_ui": {
-        "page": "index.html"
+        "page": "index.html",
+        "browser_style": false
     },
     "permissions": [
-        "tabs",
         "storage",
         "scripting",
         "activeTab"
@@ -34,5 +34,8 @@
     "action": {
         "default_title": "Reader connector extension",
         "default_popup": "index.html"
+    },
+    "content_security_policy": {
+        "extension_pages": "script-src 'self'; object-src 'self'"
     }
 }

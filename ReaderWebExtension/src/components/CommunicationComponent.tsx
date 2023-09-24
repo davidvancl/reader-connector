@@ -30,7 +30,7 @@ function CommunicationComponent() {
         {
           trigger: Trigger.onTabActivation,
           value: "Message from popup to content",
-          source: Source.bacgroundWorker
+          source: Source.backgroundWorker
         } as ComMessage
       );
     }, console.error);

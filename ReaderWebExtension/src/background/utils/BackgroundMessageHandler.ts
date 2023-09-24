@@ -15,8 +15,10 @@ export class BackgroundMessageHandler {
             {
                 trigger: Trigger.onTabActivation,
                 value: "Message action executed from bacground worker.",
-                source: Source.bacgroundWorker
+                source: Source.backgroundWorker
             } as ComMessage
-        );
+        ).catch((e) => {
+            console.log(e);
+        });
     }
 }

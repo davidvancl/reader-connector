@@ -4,7 +4,7 @@ export enum Trigger {
 }
 
 export enum Source {
-    bacgroundWorker = "bacgroundWorker",
+    backgroundWorker = "backgroundWorker",
     contentWorker = "contentWorker"
 }
 

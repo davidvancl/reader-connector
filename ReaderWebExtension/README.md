@@ -1,4 +1,4 @@
-# Gunnik used techonlogy
+# Used techonlogy
 - React
 - TypeScript
 - Webpack

@@ -1,15 +1,15 @@
 export enum Trigger {
-    onTabActivation = "onTabActivation",
-    contentConfirmAction = "contentConfirmAction"
+  onTabActivation = 'onTabActivation',
+  contentConfirmAction = 'contentConfirmAction'
 }
 
 export enum Source {
-    backgroundWorker = "backgroundWorker",
-    contentWorker = "contentWorker"
+  backgroundWorker = 'backgroundWorker',
+  contentWorker = 'contentWorker'
 }
 
 export interface ComMessage {
-    trigger: Trigger,
-    value: string,
-    source: Source,
+  trigger: Trigger;
+  value: string;
+  source: Source;
 }

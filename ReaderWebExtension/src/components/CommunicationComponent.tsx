@@ -1,40 +1,35 @@
 import React from 'react';
 import { InputGroup } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import browser from "webextension-polyfill";
+import browser from 'webextension-polyfill';
 import { ComMessage, Source, Trigger } from '@utils/MessangerUtil';
 
 function CommunicationComponent() {
-
   const handleClick = () => {
     browser.permissions.request({ origins: ['<all_urls>'] });
-  }
+  };
 
   const handleReload = () => {
     browser.runtime.reload();
-  }
+  };
 
   const handleSendDataToBacground = () => {
-    browser.runtime.sendMessage(
-      {
-        trigger: Trigger.contentConfirmAction,
-        value: "Message from popup to background",
-        source: Source.contentWorker
-      } as ComMessage
-    );
-  }
+    browser.runtime.sendMessage({
+      trigger: Trigger.contentConfirmAction,
+      value: 'Message from popup to background',
+      source: Source.contentWorker
+    } as ComMessage);
+  };
 
   const handleSendDataToContent = () => {
     browser.tabs.query({ currentWindow: true, active: true }).then((tabs) => {
-      browser.tabs.sendMessage(Number(tabs[0].id),
-        {
-          trigger: Trigger.onTabActivation,
-          value: "Message from popup to content",
-          source: Source.backgroundWorker
-        } as ComMessage
-      );
+      browser.tabs.sendMessage(Number(tabs[0].id), {
+        trigger: Trigger.onTabActivation,
+        value: 'Message from popup to content',
+        source: Source.backgroundWorker
+      } as ComMessage);
     }, console.error);
-  }
+  };
 
   return (
     <>

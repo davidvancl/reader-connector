@@ -1,15 +1,20 @@
 export enum Trigger {
-  onTabActivation = 'onTabActivation',
-  contentConfirmAction = 'contentConfirmAction'
+	// Regular actions
+	onTabActivation = 'onTabActivation',
+	contentConfirmAction = 'contentConfirmAction',
+
+	// WebSocket actions
+	startWebSocketClient = 'startWebSocketClient',
+	stopWebSocketClient = 'stopWebSocketClient'
 }
 
 export enum Source {
-  backgroundWorker = 'backgroundWorker',
-  contentWorker = 'contentWorker'
+	backgroundWorker = 'backgroundWorker',
+	contentWorker = 'contentWorker'
 }
 
 export interface ComMessage {
-  trigger: Trigger;
-  value: string;
-  source: Source;
+	trigger: Trigger;
+	value: string;
+	source: Source;
 }

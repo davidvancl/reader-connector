@@ -5,5 +5,5 @@ import { App } from './App';
 const rootNode = document.getElementById('root');
 
 if (rootNode) {
-  createRoot(rootNode).render(<App />);
+	createRoot(rootNode).render(<App />);
 }

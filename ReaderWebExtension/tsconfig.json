@@ -1,5 +1,6 @@
 {
     "compilerOptions": {
+        "types": ["node", "jest", "express"],
         "target": "ESNext",
         "module": "umd",
         "lib": [
@@ -22,8 +23,14 @@
             ],
             "@utils/*": [
                 "utils/*"
+            ],
+            "@assets/*": [
+                "assets/*"
             ]
-        }
+        },
+        "typeRoots": [
+            "utils/index.d.ts"
+        ]
     },
     "include": [
         "src"

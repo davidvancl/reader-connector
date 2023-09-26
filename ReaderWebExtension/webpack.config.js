@@ -20,7 +20,6 @@ module.exports = env => {
             }
         },
         module: {
-            noParse: /gun\.js$/,
             rules: [
                 {
                     test: /\.(js|ts)x?$/,
@@ -40,15 +39,17 @@ module.exports = env => {
             alias: {
                 "@components": path.resolve(__dirname, "src/components"),
                 "@utils": path.resolve(__dirname, "src/utils"),
+                "@assets": path.resolve(__dirname, "src/assets"),
             }
         },
         plugins: [
             new CopyPlugin({
                 patterns: [
                     { from: env.chrome ? "./src/manifest-chrome.json" : "./src/manifest.json", to: "./manifest.json" },
-                    { from: "./public/index.html", to: "./index.html" }
+                    { from: "./public/index.html", to: "./index.html" },
+                    { from: "./src/assets", to: "./css" },
                 ],
-            })
+            }),
         ],
     }
 }

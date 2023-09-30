@@ -7,6 +7,7 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/connectionStatusTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hello World!"
@@ -17,8 +18,8 @@
 
     <TextView
         android:id="@+id/ipAddressTextView"
-        android:layout_width="328dp"
-        android:layout_height="44dp"
+        android:layout_width="282dp"
+        android:layout_height="42dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="40dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,13 +27,24 @@
 
     <Button
         android:id="@+id/serverStartButton"
-        android:layout_width="327dp"
-        android:layout_height="54dp"
+        android:layout_width="283dp"
+        android:layout_height="55dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="40dp"
         android:onClick="onClickStartWebSocketServer"
         android:text="Start server"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ipAddressTextView" />
+
+    <Button
+        android:id="@+id/sendBroadcastMessage"
+        android:layout_width="280dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="36dp"
+        android:onClick="onBroadcastClick"
+        android:text="Send broadcast message"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/serverStartButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

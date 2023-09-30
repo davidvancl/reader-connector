@@ -1,8 +1,4 @@
-import CommunicationComponent from '@components/CommunicationComponent';
+import PopupComponent from '@components/PopupComponent';
 import React from 'react';
 
-export const App: React.FC = () => (
-	<>
-		<CommunicationComponent />
-	</>
-);
+export const App: React.FC = () => <PopupComponent />;

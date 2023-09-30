@@ -3,12 +3,12 @@ import QuickActionComponent from './QuickActionComponent';
 import TextAreaComponent from './TextAreaComponent';
 import { Col, Container, Row } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '@assets/style.css';
+import '@assets/css/style.css';
 import * as Unicons from '@iconscout/react-unicons';
 import browser from 'webextension-polyfill';
 import { ComMessage, Source, Trigger } from '@utils/MessangerUtil';
 
-function CommunicationComponent() {
+function PopupComponent() {
 	const handlePermissionRequest = () => {
 		browser.permissions.request({ origins: ['<all_urls>'] });
 	};
@@ -129,4 +129,4 @@ function CommunicationComponent() {
 	);
 }
 
-export default CommunicationComponent;
+export default PopupComponent;

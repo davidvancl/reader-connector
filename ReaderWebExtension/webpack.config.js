@@ -47,7 +47,7 @@ module.exports = env => {
                 patterns: [
                     { from: env.chrome ? "./src/manifest-chrome.json" : "./src/manifest.json", to: "./manifest.json" },
                     { from: "./public/index.html", to: "./index.html" },
-                    { from: "./src/assets", to: "./css" },
+                    { from: "./src/assets/css", to: "./css" },
                 ],
             }),
         ],

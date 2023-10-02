@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ReaderAndroidApp</string>
+    <string name="ServerStarted">Server ALIVE</string>
+    <string name="ServerStopped">Server DEAD</string>
+    <string name="button_text_start_scanner">START SCANNER</string>
+    <string name="text_view_server_status_title">SERVER STATUS</string>
+</resources>

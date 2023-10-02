@@ -4,47 +4,330 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:screenOrientation="portrait"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/connectionStatusTextView"
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/scanButton"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/admin_default"
+        android:fontFamily="sans-serif"
+        android:onClick="onScanOpenClick"
+        android:text="@string/button_text_start_scanner"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:backgroundTint="@null"
+        app:icon="@drawable/scan_icon"
+        app:iconGravity="textStart"
+        app:iconSize="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/ipAddressTextView"
-        android:layout_width="282dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="40dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/scanButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
-    <Button
-        android:id="@+id/serverStartButton"
-        android:layout_width="283dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="40dp"
-        android:onClick="onClickStartWebSocketServer"
-        android:text="Start server"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ipAddressTextView" />
+        <TextView
+            android:id="@+id/textViewClientsTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/border_bottom_dashed"
+            android:fontFamily="sans-serif"
+            android:text="@string/connected_clients_title"
+            android:textColor="@color/admin_default"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonServerManipulation" />
 
-    <Button
-        android:id="@+id/sendBroadcastMessage"
-        android:layout_width="280dp"
-        android:layout_height="56dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="36dp"
-        android:onClick="onBroadcastClick"
-        android:text="Send broadcast message"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/serverStartButton" />
+        <Button
+            android:id="@+id/buttonServerManipulation"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="0dp"
+            android:layout_height="53dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/admin_success"
+            android:fontFamily="sans-serif"
+            android:onClick="onClickStartWebSocketServer"
+            android:text="@string/button_text_server_start"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:backgroundTint="@null"
+            app:icon="@drawable/start_icon"
+            app:iconGravity="textStart"
+            app:iconSize="16dp"
+            app:layout_constraintEnd_toStartOf="@+id/buttonTestCom"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayoutStatuses" />
+
+        <Button
+            android:id="@+id/buttonTestCom"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="186dp"
+            android:layout_height="53dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:background="@color/admin_default"
+            android:fontFamily="sans-serif"
+            android:onClick="onBroadcastClick"
+            android:text="@string/send_button_text"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:backgroundTint="@null"
+            app:icon="@drawable/send_icon"
+            app:iconGravity="textStart"
+            app:iconSize="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/buttonServerManipulation"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayoutStatuses" />
+
+        <TextView
+            android:id="@+id/textViewServerStatusTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/border_bottom_dashed"
+            android:fontFamily="sans-serif"
+            android:text="@string/text_view_server_status_title"
+            android:textColor="@color/admin_default"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayoutPort"
+            android:layout_width="0dp"
+            android:layout_height="67dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/border_bottom_dashed"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/constraintLayoutIpAddress"
+            app:layout_constraintTop_toBottomOf="@+id/textViewServerStatusTitle">
+
+            <Button
+                android:id="@+id/buttonPortIcon"
+                android:layout_width="32dp"
+                android:layout_height="0dp"
+                android:background="@android:color/transparent"
+                android:textAlignment="textStart"
+                app:backgroundTint="@null"
+                app:icon="@drawable/port_icon"
+                app:iconGravity="textTop"
+                app:iconPadding="0dp"
+                app:iconSize="24dp"
+                app:iconTint="#94969F"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textViewPortTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="2dp"
+                android:fontFamily="sans-serif"
+                android:text="@string/text_view_port_title"
+                android:textAlignment="viewStart"
+                android:textColor="@color/admin_neutral"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/buttonPortIcon"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textViewPort"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="2dp"
+                android:fontFamily="sans-serif"
+                android:textAlignment="viewStart"
+                android:textColor="@color/admin_neutral"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/buttonPortIcon"
+                app:layout_constraintTop_toBottomOf="@+id/textViewPortTitle" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayoutIpAddress"
+            android:layout_width="0dp"
+            android:layout_height="67dp"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/border_bottom_right_dashed"
+            app:layout_constraintEnd_toStartOf="@+id/constraintLayoutPort"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewServerStatusTitle">
+
+            <Button
+                android:id="@+id/buttonIpAddressIcon"
+                android:layout_width="32dp"
+                android:layout_height="0dp"
+                android:background="@android:color/transparent"
+                android:textAlignment="textStart"
+                app:backgroundTint="@null"
+                app:icon="@drawable/ip_address_icon"
+                app:iconGravity="textTop"
+                app:iconPadding="0dp"
+                app:iconSize="24dp"
+                app:iconTint="#94969F"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textViewIpAddressTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="2dp"
+                android:fontFamily="sans-serif"
+                android:text="@string/text_view_ip_address_title"
+                android:textAlignment="viewStart"
+                android:textColor="@color/admin_neutral"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/buttonIpAddressIcon"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textViewIpAddress"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="2dp"
+                android:fontFamily="sans-serif"
+                android:textAlignment="viewStart"
+                android:textColor="@color/admin_neutral"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/buttonIpAddressIcon"
+                app:layout_constraintTop_toBottomOf="@+id/textViewIpAddressTitle" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayoutStatuses"
+            android:layout_width="0dp"
+            android:layout_height="67dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/border_bottom_dashed"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayoutIpAddress">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="80dp"
+                android:layout_height="0dp"
+                android:background="@drawable/border_right_dashed"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/buttonServerStatus"
+                    android:layout_width="100dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginEnd="16dp"
+                    android:clickable="true"
+                    android:scrollbarThumbHorizontal="@android:color/transparent"
+                    android:scrollbarThumbVertical="@android:color/transparent"
+                    android:soundEffectsEnabled="false"
+                    android:textAlignment="center"
+                    app:background="@android:color/transparent"
+                    app:backgroundTint="@color/zxing_transparent"
+                    app:elevation="0dp"
+                    app:fabCustomSize="45dp"
+                    app:layout_constraintBottom_toTopOf="@+id/textViewIpAddressTitle2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="@color/admin_danger"
+                    app:pressedTranslationZ="0dp"
+                    app:srcCompat="@drawable/error_icon"
+                    android:contentDescription="@string/status_description" />
+
+                <TextView
+                    android:id="@+id/textViewIpAddressTitle2"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="5dp"
+                    android:fontFamily="sans-serif"
+                    android:text="@string/text_view_status"
+                    android:textAlignment="center"
+                    android:textColor="@color/admin_default"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/buttonServerStatus" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ScrollView
+            android:layout_width="0dp"
+            android:background="@drawable/border_bottom_dashed"
+            android:layout_height="0dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewClientsTitle">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

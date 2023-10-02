@@ -2,4 +2,8 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="admin_default">#3E63FF</color>
+    <color name="admin_neutral">#94969F</color>
+    <color name="admin_danger">#E66353</color>
+    <color name="admin_success">#A9BA5A</color>
 </resources>

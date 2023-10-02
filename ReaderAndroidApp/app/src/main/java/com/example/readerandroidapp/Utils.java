@@ -3,6 +3,8 @@ package com.example.readerandroidapp;
 import android.app.ActivityManager;
 import android.content.Context;
 import androidx.appcompat.app.AppCompatActivity;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 public final class Utils {
     public static boolean isMyServiceRunning(Class<?> serviceClass, AppCompatActivity activity) {

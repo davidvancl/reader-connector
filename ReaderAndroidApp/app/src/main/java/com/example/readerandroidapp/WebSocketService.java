@@ -57,7 +57,10 @@ public class WebSocketService extends Service {
 
             @Override
             public void onStart() {
-                System.out.println("Server started.");
+                Intent intentConnection = new Intent();
+                intentConnection.setAction("com.example.readerandroidapp");
+                intentConnection.putExtra("CONNECTION_STATUS", "Server ALIVE");
+                sendBroadcast(intentConnection);
             }
         };
         this.wss.start();
@@ -65,7 +68,7 @@ public class WebSocketService extends Service {
         return localBinder;
     }
 
-    public WebSocketServer getWss () {
+    public WebSocketServer getWss() {
         return wss;
     }
 

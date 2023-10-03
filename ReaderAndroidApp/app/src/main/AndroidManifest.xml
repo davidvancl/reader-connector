@@ -21,11 +21,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ReaderAndroidApp"
         tools:targetApi="31">
+
         <activity
             android:name=".MainActivity"
-            android:exported="true"
-            android:screenOrientation="fullSensor"
-            tools:replace="screenOrientation">
+            android:screenOrientation="portrait"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -34,8 +34,7 @@
 
         <activity
             android:name=".CustomCaptureActivity"
-            android:screenOrientation="fullSensor"
-            tools:replace="screenOrientation">
+            android:screenOrientation="portrait">
 
         </activity>
 

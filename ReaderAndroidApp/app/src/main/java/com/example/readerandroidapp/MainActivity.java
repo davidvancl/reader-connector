@@ -13,15 +13,21 @@ import android.os.IBinder;
 import android.text.format.Formatter;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
+import java.util.Objects;
+
 public class MainActivity extends AppCompatActivity {
     boolean mBounded;
     WebSocketService webSocketService;
+    ClientListAdapter clientsAdapter;
+    ArrayList<String> clients = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +37,11 @@ public class MainActivity extends AppCompatActivity {
         WifiManager wm = (WifiManager) getBaseContext().getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         String ip = Formatter.formatIpAddress(wm.getConnectionInfo().getIpAddress());
         ((TextView) findViewById(R.id.textViewIpAddress)).setText(ip);
-        ((TextView) findViewById(R.id.textViewPort)).setText(String.valueOf(8887));
+        ((TextView) findViewById(R.id.textViewPort)).setText(String.valueOf(Utils.getServerPort()));
+
+        ListView clientView = findViewById(R.id.clientListView);
+        clientsAdapter = new ClientListAdapter(this, R.layout.client_list, clients);
+        clientView.setAdapter(clientsAdapter);
     }
 
     @SuppressLint("UnspecifiedRegisterReceiverFlag")
@@ -56,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onScanOpenClick(View v) {
-        startActivity(new Intent(this, CustomCaptureActivity.class));
+        startActivity(new Intent(this, BarcodeCaptureActivity.class));
     }
 
     public void onClickStartWebSocketServer(View v) {
@@ -110,7 +120,19 @@ public class MainActivity extends AppCompatActivity {
     BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            setStatusVisualisation(true);
+            if (Objects.equals(intent.getStringExtra("CONNECTION_STATUS"), "ALIVE")) {
+                setStatusVisualisation(true);
+            }
+
+            if (Objects.equals(intent.getStringExtra("RENDER_CLIENTS"), "TRUE")) {
+                if (webSocketService != null) {
+                    clients.clear();
+                    webSocketService.getClients().forEach(client -> {
+                        clients.add(String.format("%s", client.getRemoteSocketAddress().toString().replace("/", "")));
+                    });
+                    clientsAdapter.notifyDataSetChanged();
+                }
+            }
         }
     };
 
@@ -128,6 +150,9 @@ public class MainActivity extends AppCompatActivity {
             serverAction.setBackgroundResource(R.color.admin_success);
             status.setImageResource(R.drawable.error_icon);
             status.setImageTintList(getResources().getColorStateList(R.color.admin_danger, null));
+
+            clients.clear();
+            clientsAdapter.notifyDataSetChanged();
         }
     }
 }

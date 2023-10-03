@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/send_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:clickable="true"
+        android:contentDescription="@string/status_description"
+        android:scrollbarThumbHorizontal="@android:color/transparent"
+        android:scrollbarThumbVertical="@android:color/transparent"
+        android:soundEffectsEnabled="false"
+        android:textAlignment="center"
+        app:background="@android:color/transparent"
+        app:backgroundTint="@color/zxing_transparent"
+        app:elevation="0dp"
+        app:fabCustomSize="40dp"
+        app:pressedTranslationZ="0dp"
+        app:srcCompat="@drawable/signal_icon"
+        app:tint="@color/admin_success"
+        app:useCompatPadding="false" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/textViewClientTitle"
+        android:text="@string/client_ip_text_title"
+        android:textSize="14sp"
+        android:textColor="@color/admin_neutral"
+        android:paddingTop="10dip"
+        android:gravity="center"
+        android:layout_marginEnd="10dp"
+        android:paddingBottom="10dip" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/textViewClientAddress"
+        android:textSize="14sp"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:paddingTop="10dip"
+        android:paddingBottom="10dip" />
+
+</LinearLayout>

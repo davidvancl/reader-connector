@@ -12,4 +12,6 @@
     <string name="connected_clients_title">CONNECTED CLIENTS</string>
     <string name="button_return_text">RETURN</string>
     <string name="last_scanned_code_image">Last scanned code image</string>
+    <string name="client_ip_text_title">Client IP:</string>
+    <string name="client_icon_description">Client icon</string>
 </resources>

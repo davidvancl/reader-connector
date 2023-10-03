@@ -310,24 +310,22 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <ScrollView
+        <ListView
+            android:id="@+id/clientListView"
             android:layout_width="0dp"
-            android:background="@drawable/border_bottom_dashed"
             android:layout_height="0dp"
+            android:drawSelectorOnTop="false"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="5dp"
+            android:background="@drawable/border_bottom_dashed"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewClientsTitle">
+            app:layout_constraintTop_toBottomOf="@+id/textViewClientsTitle"
+            tools:ignore="NestedScrolling" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" />
-        </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

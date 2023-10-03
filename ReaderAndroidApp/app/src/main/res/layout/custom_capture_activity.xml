@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:screenOrientation="portrait"
-    tools:context=".CustomCaptureActivity">
+    tools:context=".BarcodeCaptureActivity">
 
     <com.journeyapps.barcodescanner.DecoratedBarcodeView
         android:id="@+id/barcode_scanner"
@@ -23,7 +23,6 @@
         android:id="@+id/constraintLayoutActionBar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/border_right_dashed"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">

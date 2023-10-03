@@ -33,7 +33,7 @@
         </activity>
 
         <activity
-            android:name=".CustomCaptureActivity"
+            android:name=".BarcodeCaptureActivity"
             android:screenOrientation="portrait">
 
         </activity>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import QuickActionComponent from './QuickActionComponent';
 import TextAreaComponent from './TextAreaComponent';
 import { Col, Container, Row } from 'react-bootstrap';
@@ -9,6 +9,23 @@ import browser from 'webextension-polyfill';
 import { ComMessage, Source, Trigger } from '@utils/MessangerUtil';
 
 function PopupComponent() {
+	const [ipAddress, setIpAddress] = useState('');
+
+	useEffect(() => {
+		browser.storage.local.get('web_socket_server_ip').then(function (value) {
+			setIpAddress(value.web_socket_server_ip);
+		});
+	}, []);
+
+	const handleSetIpAddress = () => {
+		browser.storage.local
+			.set({
+				'web_socket_server_ip': ipAddress
+			})
+			.then(() => {});
+	};
+
+	// Requests required permissions
 	const handlePermissionRequest = () => {
 		browser.permissions.request({ origins: ['<all_urls>'] });
 	};
@@ -21,7 +38,7 @@ function PopupComponent() {
 		browser.runtime.sendMessage({
 			trigger: Trigger.contentConfirmAction,
 			value: 'Message from popup to background',
-			source: Source.contentWorker
+			source: Source.popupWorker
 		} as ComMessage);
 	};
 
@@ -40,6 +57,30 @@ function PopupComponent() {
 			<div className='layout_main'>
 				<div className='service_section layout_padding'>
 					<Container>
+						<Row>
+							<Col>
+								<div className='input-group mb-3'>
+									<input
+										onChange={(e) => setIpAddress(e.target.value)}
+										key={ipAddress}
+										defaultValue={ipAddress}
+										type='text'
+										className='form-control'
+										placeholder='Server IP address'
+										style={{ height: 28 }}
+									/>
+									<div className='input-group-append'>
+										<button
+											className='btn btn-outline-secondary'
+											onClick={handleSetIpAddress}
+											type='button'>
+											Set IP
+										</button>
+									</div>
+								</div>
+							</Col>
+						</Row>
+
 						<Row>
 							<Col className='col-sm-12'>
 								<h1 className='service_taital'>Quick Actions</h1>

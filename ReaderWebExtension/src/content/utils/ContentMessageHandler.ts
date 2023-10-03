@@ -3,17 +3,22 @@ import browser from 'webextension-polyfill';
 
 export class ContentMessageHandler {
 	static handleMessageAction(message: ComMessage) {
-		if (message.trigger === Trigger.onTabActivation) {
-			if(message.value === "HELLO WORLD") {
-				document.body.style.backgroundColor = "red";
-			} else {
+		switch (message.trigger) {
+			case Trigger.webSocketMessage:
+				console.log(message.value);
+				break;
+			case Trigger.onTabActivation:
+				// TODO: implement or remove
+				break;
+			default:
+				// Log value to console and send confirm message
 				console.log(message.value);
 				browser.runtime.sendMessage({
 					trigger: Trigger.contentConfirmAction,
-					value: 'Confirm!',
+					value: 'Message confirmed without action',
 					source: Source.contentWorker
 				} as ComMessage);
-			}
+				break;
 		}
 	}
 }

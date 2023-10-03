@@ -5,12 +5,14 @@ export enum Trigger {
 
 	// WebSocket actions
 	startWebSocketClient = 'startWebSocketClient',
-	stopWebSocketClient = 'stopWebSocketClient'
+	stopWebSocketClient = 'stopWebSocketClient',
+	webSocketMessage = 'webSocketMessage'
 }
 
 export enum Source {
 	backgroundWorker = 'backgroundWorker',
-	contentWorker = 'contentWorker'
+	contentWorker = 'contentWorker',
+	popupWorker = 'popupWorker'
 }
 
 export interface ComMessage {

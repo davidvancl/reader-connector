@@ -7,6 +7,7 @@ class ContentWorker {
 	}
 
 	constructor() {
+		// Register message listener (ws, background, popup)
 		this.registerOnMessageListener();
 	}
 }

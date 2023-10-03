@@ -1,7 +1,5 @@
 <resources>
     <string name="app_name">ReaderAndroidApp</string>
-    <string name="ServerStarted">Server ALIVE</string>
-    <string name="ServerStopped">Server DEAD</string>
     <string name="button_text_start_scanner">START SCANNER</string>
     <string name="text_view_server_status_title">SERVER STATUS</string>
     <string name="text_view_ip_address_title">IP address</string>
@@ -12,4 +10,6 @@
     <string name="text_view_status">STATUS</string>
     <string name="status_description">Shows websocker server actual status.</string>
     <string name="connected_clients_title">CONNECTED CLIENTS</string>
+    <string name="button_return_text">RETURN</string>
+    <string name="last_scanned_code_image">Last scanned code image</string>
 </resources>

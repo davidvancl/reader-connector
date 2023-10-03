@@ -50,7 +50,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onBroadcastClick(View v) {
-        webSocketService.getWss().broadcast("HELLO WORLD");
+        if (webSocketService != null) {
+            webSocketService.getWss().broadcast("HELLO WORLD");
+        }
     }
 
     public void onScanOpenClick(View v) {

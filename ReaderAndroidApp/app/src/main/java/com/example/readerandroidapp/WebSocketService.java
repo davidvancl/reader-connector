@@ -4,11 +4,9 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
-
 import org.java_websocket.WebSocket;
 import org.java_websocket.handshake.ClientHandshake;
 import org.java_websocket.server.WebSocketServer;
-
 import java.net.InetSocketAddress;
 import java.util.ArrayList;
 import java.util.function.Function;
@@ -55,7 +53,6 @@ public class WebSocketService extends Service {
             @Override
             public void onClose(WebSocket conn, int code, String reason, boolean remote) {
                 if (clients.contains(conn)) {
-                    System.out.println("Mažu neni nikdo pripojen.");
                     clients.remove(conn);
                     castDataToMainActivity((Intent localIntent) -> {
                         localIntent.putExtra("RENDER_CLIENTS", "TRUE");
@@ -66,8 +63,7 @@ public class WebSocketService extends Service {
 
             @Override
             public void onMessage(WebSocket conn, String message) {
-                System.out.println(message);
-                conn.send("WTF");
+
             }
 
             @Override

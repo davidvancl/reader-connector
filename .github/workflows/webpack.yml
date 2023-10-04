@@ -67,3 +67,9 @@ jobs:
         
       - name: Build android app with Gradle
         run: ./gradlew build
+
+      - name: Upload android artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: android-artefact-jar
+          path: $0

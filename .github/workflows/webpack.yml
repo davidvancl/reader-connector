@@ -72,4 +72,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: android-artefact
-          path: $0
+          path: ./ReaderAndroidApp/build/libs/*.jar
+
+
+        

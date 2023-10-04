@@ -30,7 +30,7 @@ jobs:
       - name: Upload mozilla build artefact
         uses: actions/upload-artifact@v3
         with:
-          name: mozilla-build-artefact
+          name: mozilla-build-artifact
           path: ./ReaderWebExtension/build
 
       - name: Run build for chrome browser
@@ -39,7 +39,7 @@ jobs:
       - name: Upload chrome build artefact
         uses: actions/upload-artifact@v3
         with:
-          name: chrome-build-artefact
+          name: chrome-build-artifact
           path: ./ReaderWebExtension/build
           
   build-androidapp:
@@ -67,5 +67,5 @@ jobs:
       - name: Upload android artifact
         uses: actions/upload-artifact@v3
         with:
-          name: android-artefact
+          name: android-app-artifact
           path: ./ReaderAndroidApp/app/build/outputs/apk/release/app-release-unsigned.apk

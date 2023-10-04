@@ -1,4 +1,4 @@
-name: NodeJS with Webpack
+name: Build and upload artefacts
 
 on:
   push:
@@ -44,4 +44,26 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: chrome-build-artefact
-          path: ./ReaderWebExtension/build      
+          path: ./ReaderWebExtension/build
+          
+  build-androidapp:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./ReaderAndroidApp
+
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: set up JDK 11
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+          cache: gradle
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+        
+      - name: Build android app with Gradle
+        run: gradlew build

@@ -31,8 +31,17 @@ jobs:
       - name: Run build for mozilla browser
         run: npm run build
 
-      - name: Upload build zip as artefact
+      - name: Upload mozilla build artefact
         uses: actions/upload-artifact@v3
         with:
           name: mozilla-build-artefact
           path: ./ReaderWebExtension/build
+
+      - name: Run build for chrome browser
+        run: npm run build-chrome
+
+      - name: Upload chrome build artefact
+        uses: actions/upload-artifact@v3
+        with:
+          name: chrome-build-artefact
+          path: ./ReaderWebExtension/build      

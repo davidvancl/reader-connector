@@ -7,21 +7,26 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
+  build-webextension:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./ReaderWebExtension
 
     strategy:
       matrix:
         node-version: [18.x]
 
     steps:
-    - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        
-    - name: Build webextension for mozilla browser
-      working-directory: ./ReaderWebExtension
-      run: npm ci | npm run build
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          
+      - name: Install packages
+        run: npm ci
+
+      - name: Run build for mozilla browser
+        run: npm run build

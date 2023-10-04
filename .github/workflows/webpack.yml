@@ -30,3 +30,9 @@ jobs:
 
       - name: Run build for mozilla browser
         run: npm run build
+
+      - name: Upload build zip as artefact
+        uses: actions/upload-artifact@v3
+        with:
+          name: mozilla-build-artefact
+          path: ./build

@@ -9,6 +9,7 @@ export class ContentMessageHandler {
 				break;
 			case Trigger.onTabActivation:
 				// TODO: implement or remove
+				console.log(message.value);
 				break;
 			default:
 				// Log value to console and send confirm message

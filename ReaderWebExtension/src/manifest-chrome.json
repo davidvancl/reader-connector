@@ -1,5 +1,5 @@
 {
-    "name": "Reader connector extension",
+    "name": "Reader connector",
     "author": "David Vancl",
     "version": "1.0.0",
     "manifest_version": 3,
@@ -8,19 +8,26 @@
         "page": "index.html",
         "browser_style": false
     },
+    "icons": {
+        "16": "/images/icon-16x16.png",
+        "32": "/images/icon-32x32.png",
+        "48": "/images/icon-64x64.png",
+        "128": "/images/icon-128x128.png"
+    },
     "permissions": [
         "storage",
         "scripting",
-        "activeTab"
+        "activeTab",
+        "tabs"
     ],
     "host_permissions": [
         "<all_urls>"
     ],
     "content_scripts": [
         {
+            "all_frames": true,
             "matches": [
-                "http://*/*",
-                "https://*/*"
+                "<all_urls>"
             ],
             "js": [
                 "content/content.js"
@@ -32,8 +39,14 @@
         "type": "module"
     },
     "action": {
-        "default_title": "Reader connector extension",
-        "default_popup": "index.html"
+        "default_title": "Reader connector",
+        "default_popup": "index.html",
+        "default_icon": {
+            "16": "/images/icon-16x16.png",
+            "32": "/images/icon-32x32.png",
+            "48": "/images/icon-64x64.png",
+            "128": "/images/icon-128x128.png"
+        }
     },
     "content_security_policy": {
         "extension_pages": "script-src 'self'; object-src 'self'"

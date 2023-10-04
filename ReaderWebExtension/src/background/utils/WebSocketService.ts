@@ -7,6 +7,7 @@ export class WebSocketService {
 	}
 
 	static handleOnMessageListener(event: any) {
+		console.log(event.data);
 		// Re-sends data from ws to active tab
 		browser.tabs.query({ currentWindow: true, active: true }).then((tabs) => {
 			browser.tabs.sendMessage(Number(tabs[0].id), {
@@ -14,7 +15,7 @@ export class WebSocketService {
 				value: event.data,
 				source: Source.backgroundWorker
 			} as ComMessage);
-		}, console.error);
+		}, console.log);
 	}
 
 	static createWebSocketServerWithListeners() {
@@ -29,13 +30,13 @@ export class WebSocketService {
 				// Listen for messages
 				socket.addEventListener('message', WebSocketService.handleOnMessageListener);
 			} else {
-				console.error(`An error occurred while loading websocket server ip address`);
+				console.log(`An error occurred while loading websocket server ip address`);
 			}
 		});
 
 		// Auto reloads background script and refreshs connection
 		browser.storage.local.get('keep_connection_alive').then(function (value) {
-			if (value.keep_connection_alive === 'true') {
+			if (value.keep_connection_alive === true) {
 				setTimeout(() => {
 					browser.runtime.reload();
 				}, 25000);

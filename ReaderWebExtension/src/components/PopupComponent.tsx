@@ -1,173 +1,78 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
-import QuickActionComponent from './QuickActionComponent';
-import TextAreaComponent from './TextAreaComponent';
-import { Col, Container, Row } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '@assets/css/style.css';
+import React from 'react';
+import { Container } from 'react-bootstrap';
 import * as Unicons from '@iconscout/react-unicons';
 import browser from 'webextension-polyfill';
 import { ComMessage, Source, Trigger } from '@utils/MessangerUtil';
+import ServerSettingsComponent from './elements/ServerSettingsComponent';
+import QuickActionComponent from './elements/QuickActionComponent';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '@assets/css/popup.css';
 
 function PopupComponent() {
-	const [ipAddress, setIpAddress] = useState('');
-
-	useEffect(() => {
-		browser.storage.local.get('web_socket_server_ip').then(function (value) {
-			setIpAddress(value.web_socket_server_ip);
-		});
-	}, []);
-
-	const handleSetIpAddress = () => {
-		browser.storage.local
-			.set({
-				'web_socket_server_ip': ipAddress
-			})
-			.then(() => {});
-	};
-
-	// Requests required permissions
-	const handlePermissionRequest = () => {
-		browser.permissions.request({ origins: ['<all_urls>'] });
-	};
-
-	const handleReload = () => {
-		browser.runtime.reload();
-	};
-
-	const handleSendDataToBacground = () => {
-		browser.runtime.sendMessage({
-			trigger: Trigger.contentConfirmAction,
-			value: 'Message from popup to background',
-			source: Source.popupWorker
-		} as ComMessage);
-	};
-
-	const handleSendDataToContent = () => {
-		browser.tabs.query({ currentWindow: true, active: true }).then((tabs) => {
-			browser.tabs.sendMessage(Number(tabs[0].id), {
-				trigger: Trigger.onTabActivation,
-				value: 'Message from popup to content',
-				source: Source.backgroundWorker
-			} as ComMessage);
-		}, console.error);
-	};
-
 	return (
-		<Container fluid>
-			<div className='layout_main'>
-				<div className='service_section layout_padding'>
-					<Container>
-						<Row>
-							<Col>
-								<div className='input-group mb-3'>
-									<input
-										onChange={(e) => setIpAddress(e.target.value)}
-										key={ipAddress}
-										defaultValue={ipAddress}
-										type='text'
-										className='form-control'
-										placeholder='Server IP address'
-										style={{ height: 28 }}
-									/>
-									<div className='input-group-append'>
-										<button
-											className='btn btn-outline-secondary'
-											onClick={handleSetIpAddress}
-											type='button'>
-											Set IP
-										</button>
-									</div>
-								</div>
-							</Col>
-						</Row>
+		<div>
+			<ServerSettingsComponent />
+			<Container>
+				<div className="my-3 p-3 bg-white rounded box-shadow">
+					<h6 className="border-bottom border-gray pb-2 mb-0">Quick actions</h6>
 
-						<Row>
-							<Col className='col-sm-12'>
-								<h1 className='service_taital'>Quick Actions</h1>
-							</Col>
-						</Row>
-						<div className='service_section_2'>
-							<Row>
-								<QuickActionComponent
-									icon={
-										<Unicons.UilUnlockAlt
-											className='action-icon'
-											width='64'
-											height='64'
-										/>
-									}
-									title='Permissions'
-									actionName='Request'
-									actionCallback={handlePermissionRequest}
-								/>
-								<QuickActionComponent
-									icon={
-										<Unicons.UilSync
-											className='action-icon'
-											width='64'
-											height='64'
-										/>
-									}
-									title='Reload'
-									actionName='Reload'
-									actionCallback={handleReload}
-								/>
-								<QuickActionComponent
-									icon={
-										<Unicons.UilServerConnection
-											className='action-icon'
-											width='64'
-											height='64'
-										/>
-									}
-									title='Background'
-									actionName='Send'
-									actionCallback={handleSendDataToBacground}
-								/>
-								<QuickActionComponent
-									icon={
-										<Unicons.UilWindow
-											className='action-icon'
-											width='64'
-											height='64'
-										/>
-									}
-									title='Page'
-									actionName='Send'
-									actionCallback={handleSendDataToContent}
-								/>
-							</Row>
-						</div>
-					</Container>
+					<QuickActionComponent
+						title='Permission request'
+						actionTitle='Request'
+						description='Requests permission to send data to the page'
+						icon={<Unicons.UilLockOpenAlt style={{ height: 32, width: 32 }} />}
+						callback={() => {
+							browser.permissions.request({ origins: ['<all_urls>'] });
+						}}
+					/>
+
+					<QuickActionComponent
+						title='Reload extension'
+						actionTitle='Reload'
+						description='Reloads extension with background workers'
+						icon={<Unicons.UilSync style={{ height: 32, width: 32 }} />}
+						callback={() => {
+							browser.runtime.reload();
+						}}
+					/>
+
+					<QuickActionComponent
+						title='Worker message'
+						actionTitle='Send'
+						description='Sends message to background worker'
+						icon={<Unicons.UilDatabase style={{ height: 32, width: 32 }} />}
+						callback={() => {
+							browser.runtime.sendMessage({
+								trigger: Trigger.contentConfirmAction,
+								value: 'Message from popup to background',
+								source: Source.popupWorker
+							} as ComMessage);
+						}}
+					/>
+
+					<QuickActionComponent
+						title='Client message'
+						actionTitle='Send'
+						description='Sends message to active page'
+						icon={<Unicons.UilUser style={{ height: 32, width: 32 }} />}
+						callback={() => {
+							browser.tabs.query({ currentWindow: true, active: true }).then((tabs) => {
+								browser.tabs.sendMessage(Number(tabs[0].id), {
+									trigger: Trigger.onTabActivation,
+									value: 'Message from popup to content',
+									source: Source.backgroundWorker
+								} as ComMessage);
+							}, console.error);
+						}}
+					/>
+
+					<small className="d-block text-right mt-3">
+						<a href="https://github.com/davidvancl/reader-connector/issues">All suggestions</a>
+					</small>
 				</div>
-				<div className='testimonial_section layout_padding'>
-					<Container>
-						<Row>
-							<div className='col-sm-12'>
-								<h1 className='testimonial_taital'>Info Panels</h1>
-							</div>
-						</Row>
-						<div
-							className='carousel slide'
-							data-ride='carousel'>
-							<div className='carousel-inner carousel-item active testimonial_section_2'>
-								<Row>
-									<TextAreaComponent
-										title='First implementation'
-										body='26.09.2023'
-									/>
-									<TextAreaComponent
-										title='Test'
-										body='test'
-									/>
-								</Row>
-							</div>
-						</div>
-					</Container>
-				</div>
-			</div>
-		</Container>
-	);
+			</Container>
+		</div>
+	)
 }
 
 export default PopupComponent;

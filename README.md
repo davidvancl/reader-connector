@@ -28,6 +28,11 @@
   </i>
 </p>
 <br>
+
+> [WARNING] Connection  
+> Connection between android app and web extension currentry works only on local network
+
+<br>
 TODO: add project description
 
 ## Contents
@@ -41,8 +46,8 @@ TODO: add project description
 
 Link : https://www.android.com/
 
-<a href="https://awesome-github-readme-profile.netlify.app">
-  <img src="" alt="Awesome README Templates" />
+<a href="">
+  <img src="" alt="image TODO" />
 </a>
 
 ## Web extentsion (webextension-polyfill)

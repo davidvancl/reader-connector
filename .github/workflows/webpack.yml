@@ -13,17 +13,13 @@ jobs:
       run:
         working-directory: ./ReaderWebExtension
 
-    strategy:
-      matrix:
-        node-version: [18.x]
-
     steps:
       - uses: actions/checkout@v3
 
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Use Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: '18.x'
           
       - name: Install packages
         run: npm ci
@@ -72,7 +68,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: android-artefact
-          path: ./ReaderAndroidApp/app/build/outputs/apk
-
-
-        
+          path: ./ReaderAndroidApp/app/build/outputs/apk/release/app-release-unsigned.apk

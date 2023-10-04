@@ -71,5 +71,5 @@ jobs:
       - name: Upload android artifact
         uses: actions/upload-artifact@v3
         with:
-          name: android-artefact-jar
+          name: android-artefact
           path: $0

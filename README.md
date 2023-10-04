@@ -29,7 +29,7 @@
 </p>
 <br>
 
-> [WARNING] Connection  
+> **Warning**  
 > Connection between android app and web extension currentry works only on local network
 
 <br>

@@ -114,7 +114,7 @@
 </tbody>
 </table>
 
-## :hammer: Development setup
+## :wrench: Development setup
 
 - [Profile Summary For Github](https://profile-summary-for-github.com/search)
 - [Github Readme Stats](https://github.com/anuraghazra/github-readme-stats) - Dynamically generated stats for your github readmes

@@ -13,8 +13,8 @@ function PopupComponent() {
 		<div>
 			<ServerSettingsComponent />
 			<Container>
-				<div className="my-3 p-3 bg-white rounded box-shadow">
-					<h6 className="border-bottom border-gray pb-2 mb-0">Quick actions</h6>
+				<div className='my-3 p-3 bg-white rounded box-shadow'>
+					<h6 className='border-bottom border-gray pb-2 mb-0'>Quick actions</h6>
 
 					<QuickActionComponent
 						title='Permission request'
@@ -66,13 +66,13 @@ function PopupComponent() {
 						}}
 					/>
 
-					<small className="d-block text-right mt-3">
-						<a href="https://github.com/davidvancl/reader-connector/issues">All suggestions</a>
+					<small className='d-block text-right mt-3'>
+						<a href='https://github.com/davidvancl/reader-connector/issues'>All suggestions</a>
 					</small>
 				</div>
 			</Container>
 		</div>
-	)
+	);
 }
 
 export default PopupComponent;

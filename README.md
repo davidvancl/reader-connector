@@ -40,13 +40,13 @@
 - [Development setup](#dev-container-setup)
 - [GitHub workflow and artifacts](#github-workflow-artifacts)
 
-## Android application
+## :green_apple: Android application
 
 <img src="doc/images/app-main.png" alt="Extension" style="max-width: 300px"/>
 
 <img src="doc/images/app-reader.png" alt="Extension" style="max-width: 300px"/>
 
-## Web extentsion (webextension-polyfill)
+## :strawberry: Web extentsion (webextension-polyfill)
 
 - [ ] [Popup - React](popup)
 - [ ] [Background worker](background)
@@ -119,7 +119,7 @@
 - [Profile Summary For Github](https://profile-summary-for-github.com/search)
 - [Github Readme Stats](https://github.com/anuraghazra/github-readme-stats) - Dynamically generated stats for your github readmes
 
-## GitHub workflow and artifacts
+## :floppy_disk: GitHub workflow and artifacts
 
 # Contribute
 

@@ -70,7 +70,7 @@
     <tr>
         <td>Build Status</td>
         <td>
-            <img src="https://github.com/davidvancl/reader-connector/workflows/tests/badge.svg?query=branch%3Amain" alt="Build Status">
+            <img src="https://github.com/davidvancl/reader-connector/actions/workflows/build_workflow.yml/badge.svg" alt="Build Status">
         </td>
     </tr>
     <tr>

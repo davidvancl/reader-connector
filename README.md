@@ -18,7 +18,7 @@
   <a href="https://github.com/davidvancl/reader-connector/graphs/contributors">
     <img alt="GitHub contributors" src="https://img.shields.io/github/contributors/davidvancl/reader-connector?color=2b9348">
   </a>
-  <a href="https://github.com/davidvancl/reader-connector/LICENSE">
+  <a href="https://github.com/davidvancl/reader-connector/blob/main/LICENCE">
     <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License Badge"/>
   </a>
 </div>

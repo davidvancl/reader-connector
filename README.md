@@ -1,6 +1,6 @@
-<h1 align="center">Reader connector project</h1>
+<h1 align="center">READER CONNECTOR</h1>
 <p align="center">
-  <i>Web extension allows connect from mobile app and use it as bar code reader</i>
+  <i>Web extension allows connection from a mobile app and use as a barcode scanner for the browser</i>
 </p>
 <div align="center">
   <a href="https://github.com/davidvancl/reader-connector/stargazers">
@@ -24,31 +24,27 @@
 </div>
 <br>
 <p align="center">
-  <i>For more projects check out my <a href="https://github.com/davidvancl">Profile</a>
+  <i>For more interesting projects check out my <a href="https://github.com/davidvancl">Profile</a>
   </i>
 </p>
 <br>
 
 > **Warning**  
-> Connection between android app and web extension currentry works only on local network
-
-<br>
-TODO:
+> Tested only the connection between the Android app and the web extension on the local network
 
 ## Contents
 
 - [Android application](#android-application)
 - [Web extentsion (webextension-polyfill)](#web-extension)
+- [ Builds, releases and others](#tech-info)
 - [Development setup](#dev-container-setup)
 - [GitHub workflow and artifacts](#github-workflow-artifacts)
 
 ## Android application
 
-Link : https://www.android.com/
+<img src="doc/images/app-main.png" alt="Extension" style="max-width: 300px"/>
 
-<a href="">
-  <img src="" alt="image TODO" />
-</a>
+<img src="doc/images/app-reader.png" alt="Extension" style="max-width: 300px"/>
 
 ## Web extentsion (webextension-polyfill)
 
@@ -58,10 +54,72 @@ Link : https://www.android.com/
 - [ ] [Webpack config](webpack)
 - [ ] [Packages - npm, yarn](packages)
 
-# Development setup
+### Popup - React
+
+> **Note**  
+> Some elements may not be visible depends on browser type
+
+<img src="doc/images/extension-open.png" alt="Extension" style="max-width: 300px" />
+
+<img src="doc/images/extension-view.png" alt="Popup view of web extension" style="max-width: 300px" />
+
+## :hammer: Builds, releases and others
+
+<table>
+<tbody>
+    <tr>
+        <td>Build Status</td>
+        <td>
+            <img src="https://github.com/davidvancl/reader-connector/workflows/tests/badge.svg?query=branch%3Amain" alt="Build Status">
+        </td>
+    </tr>
+    <tr>
+        <td>Coverage</td>
+        <td>
+            <img src="https://codecov.io/gh/davidvancl/reader-connector/branch/main/graph/badge.svg" alt="codecov">
+        </td>
+    </tr>
+    <tr>
+        <td>Latest dev release</td>
+        <td>
+            <img src="https://img.shields.io/github/v/tag/davidvancl/reader-connector.svg?label=tag&amp;colorB=11ccbb" alt="Github tag">
+            <img src="https://img.shields.io/website-up-down-green-red/https/davidvancl/reader-connector.svg?label=dev%20website" alt="dev-site">
+        </td>
+    </tr>
+    <tr>
+        <td>Latest release</td>
+        <td>
+        <img src="https://img.shields.io/github/release/davidvancl/reader-connector.svg?label=tag&amp;colorB=11ccbb" alt="Github release">
+    </tr>
+    <tr>
+    <td>Docs</td>
+        <td>
+            <img src="https://img.shields.io/github/last-commit/davidvancl/reader-connector/gh-pages.svg" alt="gh-pages">
+            <img src="https://img.shields.io/website-up-down-green-red/https/davidvancl/reader-connector.org.svg" alt="site">
+        </td>
+    </tr>
+    <tr>
+        <td>Notebooks</td>
+        <td>
+            <img src="https://img.shields.io/website-up-down-green-red/https/davidvancl/reader-connector.org.svg?label=Panelite" alt="dev-site">
+        </td>
+    </tr>
+    <tr>
+        <td>Support</td>
+        <td>
+            <img src="https://img.shields.io/discourse/status?server=https%3A%2F%2Fdiscourse.org" alt="Discourse">
+            <img alt="Discord" src="https://img.shields.io/discord/122326146495">
+        </td>
+    </tr>
+</tbody>
+</table>
+
+## :hammer: Development setup
 
 - [Profile Summary For Github](https://profile-summary-for-github.com/search)
 - [Github Readme Stats](https://github.com/anuraghazra/github-readme-stats) - Dynamically generated stats for your github readmes
+
+## GitHub workflow and artifacts
 
 # Contribute
 

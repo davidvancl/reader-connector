@@ -2,9 +2,9 @@ name: Build and upload artifacts
 
 on:
   push:
-    branches: ["main", "merge/tests-webextension-android"]
+    branches: ["main"]
   pull_request:
-    branches: ["main", "merge/tests-webextension-android"]
+    branches: ["main"]
 
 jobs:
   build-webextension:

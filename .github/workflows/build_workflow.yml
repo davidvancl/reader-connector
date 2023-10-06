@@ -1,10 +1,10 @@
-name: Build and upload artefacts
+name: Build and upload artifacts
 
 on:
   push:
-    branches: ["main", "tests-webextension-android"]
+    branches: ["main", "merge/tests-webextension-android"]
   pull_request:
-    branches: ["main", "tests-webextension-android"]
+    branches: ["main", "merge/tests-webextension-android"]
 
 jobs:
   build-webextension:

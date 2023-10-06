@@ -37,16 +37,18 @@ function ServerSettingsComponent() {
 
 	return (
 		<Container>
-			<label className='form-label text-primary fw-bold'>Server address</label>
+			<label className='form-label text-primary fw-bold' data-testid='setting-body'>Server address</label>
 			<div className='input-group mb-3'>
 				<span className='input-group-text text-primary'>IP</span>
 				<input
+					data-testid='setting-ip-input'
 					type='text'
 					defaultValue={ipAddress}
 					onChange={(e) => setIpAddress(e.target.value)}
 					className='form-control'
 				/>
 				<button
+					data-testid='setting-set-button'
 					className='btn btn-outline-primary'
 					type='button'
 					onClick={handleSetOnClick}>
@@ -57,15 +59,16 @@ function ServerSettingsComponent() {
 				<div className='form-check form-switch'>
 					<input
 						className='form-check-input'
+						data-testid='setting-firefox-keep-alive'
 						type='checkbox'
 						role='switch'
 						checked={keepAlive}
 						onChange={handleKeepAliveChange}
 					/>
-					<label className='form-check-label'>Forcce keep server alive</label>
+					<label className='form-check-label'>Enforcement to keep the server alive</label>
 				</div>
 			) : (
-				<></>
+				''
 			)}
 		</Container>
 	);

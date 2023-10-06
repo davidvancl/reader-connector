@@ -32,6 +32,7 @@ jobs:
         with:
           name: mozilla-build-artifact
           path: ./ReaderWebExtension/build
+          retention-days: 1
 
       - name: Run build for chrome browser
         run: npm run build-chrome
@@ -41,6 +42,7 @@ jobs:
         with:
           name: chrome-build-artifact
           path: ./ReaderWebExtension/build
+          retention-days: 1
           
   build-androidapp:
     runs-on: ubuntu-latest
@@ -69,3 +71,4 @@ jobs:
         with:
           name: android-app-artifact
           path: ./ReaderAndroidApp/app/build/outputs/apk/release/app-release-unsigned.apk
+          retention-days: 1

@@ -42,7 +42,7 @@ jobs:
           name: chrome-build-artifact
           path: ./ReaderWebExtension/build
 
-  test-coverage:
+  webextension-tests:
     runs-on: ubuntu-latest
 
     defaults:
@@ -50,8 +50,8 @@ jobs:
         working-directory: ./ReaderWebExtension
 
     steps:
-      - uses: actions/checkout@v3
-      - uses: ArtiomTr/jest-coverage-report-action@v2
+      - name: Run webextension mocke test
+        run: npm run test-ci
 
   build-androidapp:
     runs-on: ubuntu-latest

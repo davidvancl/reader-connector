@@ -1,5 +1,4 @@
-import { ComMessage, Source, Trigger } from '@utils/MessangerUtil';
-import browser from 'webextension-polyfill';
+import { ComMessage, Trigger } from '@utils/MessangerUtil';
 
 export class ContentMessageHandler {
 	static handleMessageAction(message: ComMessage) {

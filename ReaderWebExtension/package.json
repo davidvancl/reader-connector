@@ -46,7 +46,7 @@
     "lint": "eslint --ext .js,.ts,.jsx,.tsx src",
     "format": "yarn run lint --fix & yarn prettier --write 'src/**/*.{js,jsx,ts,tsx}'",
     "test": "jest",
-    "test-ci": "jest --ci --json --coverage --testLocationInResults --outputFile=report.json"
+    "test-ci": "jest --ci --coverage --testLocationInResults"
   },
   "dependencies": {
     "@iconscout/react-unicons": "^2.0.2",

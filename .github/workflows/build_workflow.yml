@@ -42,7 +42,7 @@ jobs:
           name: chrome-build-artifact
           path: ./ReaderWebExtension/build
 
-  webextension-tests:
+  webextension-post-processes:
     runs-on: ubuntu-latest
 
     defaults:
@@ -60,7 +60,16 @@ jobs:
       - name: Install packages
         run: npm ci
 
-      - name: Run webextension mocke test
+      - name: Run prettier format
+        run: npm run format
+
+      - name: Run typescript check
+        run: npm run tscheck
+
+      - name: Run lint check
+        run: npm run lint
+
+      - name: Run webextension mocked test
         run: npm run test-ci
 
   build-androidapp:

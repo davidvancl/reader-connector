@@ -2,9 +2,9 @@ name: Build and upload artefacts
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   build-webextension:
@@ -19,8 +19,8 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18.x'
-          
+          node-version: "18.x"
+
       - name: Install packages
         run: npm ci
 
@@ -41,7 +41,18 @@ jobs:
         with:
           name: chrome-build-artifact
           path: ./ReaderWebExtension/build
-          
+
+  test-coverage:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: ./ReaderWebExtension
+        
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ArtiomTr/jest-coverage-report-action@v2
+
   build-androidapp:
     runs-on: ubuntu-latest
     defaults:
@@ -50,17 +61,17 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      
+
       - name: set up JDK 17
         uses: actions/setup-java@v3
         with:
-          java-version: '17'
-          distribution: 'temurin'
+          java-version: "17"
+          distribution: "temurin"
           cache: gradle
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
-        
+
       - name: Build android app with Gradle
         run: ./gradlew build
 

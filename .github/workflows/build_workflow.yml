@@ -1,10 +1,10 @@
-name: Build and upload artefacts
+name: Build and upload artifacts
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   build-webextension:
@@ -19,8 +19,8 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18.x'
-          
+          node-version: "18.x"
+
       - name: Install packages
         run: npm ci
 
@@ -43,7 +43,37 @@ jobs:
           name: chrome-build-artifact
           path: ./ReaderWebExtension/build
           retention-days: 1
-          
+
+  webextension-post-processes:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: ./ReaderWebExtension
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18.x"
+
+      - name: Install packages
+        run: npm ci
+
+      - name: Run prettier format
+        run: npm run format
+
+      - name: Run typescript check
+        run: npm run tscheck
+
+      - name: Run lint check
+        run: npm run lint
+
+      - name: Run webextension mocked test
+        run: npm run test-ci
+
   build-androidapp:
     runs-on: ubuntu-latest
     defaults:
@@ -52,17 +82,17 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      
+
       - name: set up JDK 17
         uses: actions/setup-java@v3
         with:
-          java-version: '17'
-          distribution: 'temurin'
+          java-version: "17"
+          distribution: "temurin"
           cache: gradle
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
-        
+
       - name: Build android app with Gradle
         run: ./gradlew build
 

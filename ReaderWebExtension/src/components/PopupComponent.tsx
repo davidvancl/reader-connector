@@ -10,13 +10,14 @@ import '@assets/css/popup.css';
 
 function PopupComponent() {
 	return (
-		<div>
+		<div data-testid='popup-body'>
 			<ServerSettingsComponent />
 			<Container>
-				<div className="my-3 p-3 bg-white rounded box-shadow">
-					<h6 className="border-bottom border-gray pb-2 mb-0">Quick actions</h6>
+				<div className='my-3 p-3 bg-white rounded box-shadow'>
+					<h6 className='border-bottom border-gray pb-2 mb-0'>Quick actions</h6>
 
 					<QuickActionComponent
+						dataTestid='popup-permission'
 						title='Permission request'
 						actionTitle='Request'
 						description='Requests permission to send data to the page'
@@ -27,6 +28,7 @@ function PopupComponent() {
 					/>
 
 					<QuickActionComponent
+						dataTestid='popup-reload'
 						title='Reload extension'
 						actionTitle='Reload'
 						description='Reloads extension with background workers'
@@ -37,6 +39,7 @@ function PopupComponent() {
 					/>
 
 					<QuickActionComponent
+						dataTestid='popup-worker'
 						title='Worker message'
 						actionTitle='Send'
 						description='Sends message to background worker'
@@ -51,6 +54,7 @@ function PopupComponent() {
 					/>
 
 					<QuickActionComponent
+						dataTestid='popup-client'
 						title='Client message'
 						actionTitle='Send'
 						description='Sends message to active page'
@@ -66,13 +70,13 @@ function PopupComponent() {
 						}}
 					/>
 
-					<small className="d-block text-right mt-3">
-						<a href="https://github.com/davidvancl/reader-connector/issues">All suggestions</a>
+					<small className='d-block text-right mt-3'>
+						<a href='https://github.com/davidvancl/reader-connector/issues'>All suggestions</a>
 					</small>
 				</div>
 			</Container>
 		</div>
-	)
+	);
 }
 
 export default PopupComponent;

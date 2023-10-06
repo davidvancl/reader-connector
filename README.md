@@ -18,8 +18,8 @@
   <a href="https://github.com/davidvancl/reader-connector/graphs/contributors">
     <img alt="GitHub contributors" src="https://img.shields.io/github/contributors/davidvancl/reader-connector?color=2b9348">
   </a>
-  <a href="https://github.com/davidvancl/reader-connector/blob/master/LICENSE">
-    <img src="https://img.shields.io/github/license/davidvancl/reader-connector?color=2b9348" alt="License Badge"/>
+  <a href="https://github.com/davidvancl/reader-connector/blob/main/LICENCE">
+    <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License Badge"/>
   </a>
 </div>
 <br>
@@ -40,13 +40,13 @@
 - [Development setup](#dev-container-setup)
 - [GitHub workflow and artifacts](#github-workflow-artifacts)
 
-## Android application
+## :green_apple: Android application
 
 <img src="doc/images/app-main.png" alt="Extension" style="max-width: 300px"/>
 
 <img src="doc/images/app-reader.png" alt="Extension" style="max-width: 300px"/>
 
-## Web extentsion (webextension-polyfill)
+## :strawberry: Web extentsion (webextension-polyfill)
 
 - [ ] [Popup - React](popup)
 - [ ] [Background worker](background)
@@ -70,7 +70,7 @@
     <tr>
         <td>Build Status</td>
         <td>
-            <img src="https://github.com/davidvancl/reader-connector/workflows/tests/badge.svg?query=branch%3Amain" alt="Build Status">
+            <img src="https://github.com/davidvancl/reader-connector/actions/workflows/build_workflow.yml/badge.svg" alt="Build Status">
         </td>
     </tr>
     <tr>
@@ -114,12 +114,12 @@
 </tbody>
 </table>
 
-## :hammer: Development setup
+## :wrench: Development setup
 
 - [Profile Summary For Github](https://profile-summary-for-github.com/search)
 - [Github Readme Stats](https://github.com/anuraghazra/github-readme-stats) - Dynamically generated stats for your github readmes
 
-## GitHub workflow and artifacts
+## :floppy_disk: GitHub workflow and artifacts
 
 # Contribute
 

@@ -2,9 +2,9 @@ name: Build and upload artefacts
 
 on:
   push:
-    branches: ["main"]
+    branches: ["main", "tests-webextension-android"]
   pull_request:
-    branches: ["main"]
+    branches: ["main", "tests-webextension-android"]
 
 jobs:
   build-webextension:
@@ -48,7 +48,7 @@ jobs:
     defaults:
       run:
         working-directory: ./ReaderWebExtension
-        
+
     steps:
       - uses: actions/checkout@v3
       - uses: ArtiomTr/jest-coverage-report-action@v2

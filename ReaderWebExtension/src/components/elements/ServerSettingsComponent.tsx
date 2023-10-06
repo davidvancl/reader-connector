@@ -17,18 +17,16 @@ function ServerSettingsComponent() {
 	}, []);
 
 	const handleSetOnClick = () => {
-		browser.storage.local
-			.set({
-				web_socket_server_ip: ipAddress
-			});
+		browser.storage.local.set({
+			web_socket_server_ip: ipAddress
+		});
 	};
 
 	const handleKeepAliveChange = (e: any) => {
 		setKeepAlive(!keepAlive);
-		browser.storage.local
-			.set({
-				keep_connection_alive: !keepAlive
-			});
+		browser.storage.local.set({
+			keep_connection_alive: !keepAlive
+		});
 	};
 
 	const detectedFirefox = () => {
@@ -36,8 +34,8 @@ function ServerSettingsComponent() {
 	};
 
 	return (
-		<Container>
-			<label className='form-label text-primary fw-bold' data-testid='setting-body'>Server address</label>
+		<Container data-testid='setting-body'>
+			<label className='form-label text-primary fw-bold'>Server address</label>
 			<div className='input-group mb-3'>
 				<span className='input-group-text text-primary'>IP</span>
 				<input

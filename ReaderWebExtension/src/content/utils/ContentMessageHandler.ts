@@ -12,13 +12,8 @@ export class ContentMessageHandler {
 				console.log(message.value);
 				break;
 			default:
-				// Log value to console and send confirm message
+				// TODO: implement or remove
 				console.log(message.value);
-				browser.runtime.sendMessage({
-					trigger: Trigger.contentConfirmAction,
-					value: 'Message confirmed without action',
-					source: Source.contentWorker
-				} as ComMessage);
 				break;
 		}
 	}

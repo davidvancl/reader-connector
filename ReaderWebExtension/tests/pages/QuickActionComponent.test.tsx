@@ -10,6 +10,7 @@ describe('Test component: QuickActionComponent', () => {
 
         render(
             <QuickActionComponent
+                dataTestid='action-body'
                 title='Reload extension'
                 actionTitle='Reload'
                 description='Reloads extension with background workers'
@@ -41,7 +42,7 @@ describe('Test component: QuickActionComponent', () => {
 
     it('Test: empty render and optional parameters', async () => {
         render(
-            <QuickActionComponent title='Reload extension' />
+            <QuickActionComponent title='Reload extension' dataTestid='action-body' />
         );
 
         // Checks body

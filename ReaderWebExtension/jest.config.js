@@ -3,6 +3,7 @@ module.exports = {
   preset: 'ts-jest',
   moduleNameMapper: {
     '@components/(.*)$': '<rootDir>/src/components/$1',
+    '@utils/(.*)$': '<rootDir>/src/utils/$1',
     '@/(.*)$': '<rootDir>/src/$1',
     '^.+\\.(jpg|jpeg|png|gif|svg)$':'<rootDir>/tests/mocks/fileMock.ts',
     '^.+\\.(css|less|scss|sass)$': '<rootDir>/tests/mocks/styleMock.ts',

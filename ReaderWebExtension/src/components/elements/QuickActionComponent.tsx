@@ -3,6 +3,7 @@ import React from 'react';
 interface IProps {
 	icon?: any;
 	title: string;
+	dataTestid?: string;
 	description?: string;
 	actionTitle?: string;
 	callback?: () => void;
@@ -18,7 +19,7 @@ function QuickActionComponent(props: IProps) {
 	return (
 		<div
 			className='media text-muted pt-3'
-			data-testid='action-body'>
+			data-testid={`${props.dataTestid ?? ''}`}>
 			{props.icon ?? ''}
 			<div className='media-body pb-3 mb-0 small lh-125 border-bottom border-gray'>
 				<div className='d-flex justify-content-between align-items-center w-100'>
@@ -27,7 +28,7 @@ function QuickActionComponent(props: IProps) {
 						data-testid='action-title'>
 						{props.title ?? ''}
 					</strong>
-					{props.actionTitle ?
+					{props.actionTitle ? (
 						<button
 							type='button'
 							data-testid='action-button'
@@ -35,8 +36,10 @@ function QuickActionComponent(props: IProps) {
 							className='btn btn-primary btn-sm'
 							style={{ minWidth: 100 }}>
 							{props.actionTitle ?? ''}
-						</button> : ''
-					}
+						</button>
+					) : (
+						''
+					)}
 				</div>
 				<span
 					className='d-block fst-italic'

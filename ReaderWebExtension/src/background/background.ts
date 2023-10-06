@@ -2,7 +2,7 @@ import browser from 'webextension-polyfill';
 import { BackgroundMessageHandler } from './utils/BackgroundMessageHandler';
 import { WebSocketService } from './utils/WebSocketService';
 
-class BackgroundWorker {
+export class BackgroundWorker {
 	registerOnMessageListener(): void {
 		browser.runtime.onMessage.addListener(BackgroundMessageHandler.handleMessageAction);
 	}

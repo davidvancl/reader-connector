@@ -1,7 +1,7 @@
 import browser from 'webextension-polyfill';
 import { ContentMessageHandler } from './utils/ContentMessageHandler';
 
-class ContentWorker {
+export class ContentWorker {
 	registerOnMessageListener(): void {
 		browser.runtime.onMessage.addListener(ContentMessageHandler.handleMessageAction);
 	}

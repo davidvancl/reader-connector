@@ -19,6 +19,10 @@ describe("Test component: ServerSettingsComponent", () => {
     });
 
     it("Test with browser mock: renders correctly with data", async () => {
+        browser.storage.local.set({
+            web_socket_server_ip: "192.168.137.137"
+        });
+
         await act(async () => render(<ServerSettingsComponent />));
 
         // Checks body
@@ -27,8 +31,9 @@ describe("Test component: ServerSettingsComponent", () => {
 
         // Checks input IP
         const input = screen.getByTestId("setting-ip-input");
+        expect(input.value).toBe('192.168.137.137');
         fireEvent.change(input, { target: { value: '192.168.2.98' } });
-        expect(input.value).toBe('192.168.2.98')
+        expect(input.value).toBe('192.168.2.98');
 
         // Checks set button
         const button = screen.getByTestId("setting-set-button");
@@ -36,5 +41,8 @@ describe("Test component: ServerSettingsComponent", () => {
         browser.storage.local.get('web_socket_server_ip').then(function (value) {
             expect(value.web_socket_server_ip).toBe('192.168.2.98');
         });
+
+        // Checks switch to keep alive (because mock there is no mozilla)
+        expect(screen.findByTestId("form-check-input")).resolves.toBe({});
     });
 });

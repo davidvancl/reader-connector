@@ -50,6 +50,16 @@ jobs:
         working-directory: ./ReaderWebExtension
 
     steps:
+      - uses: actions/checkout@v3
+
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18.x"
+
+      - name: Install packages
+        run: npm ci
+
       - name: Run webextension mocke test
         run: npm run test-ci
 

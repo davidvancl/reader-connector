@@ -1,16 +1,12 @@
 import { ComMessage, Trigger } from '@utils/MessangerUtil';
+import Signals from '@utils/Signals';
 
 export class ContentMessageHandler {
 	static handleMessageAction(message: ComMessage) {
 		switch (message.trigger) {
 			case Trigger.webSocketMessage:
 				console.log(message.value);
-
-				// @ts-ignore: (code inside page)
-				if (Signals ?? false) {
-					// @ts-ignore: (code inside page)
-					Signals.publish('code_received', { 'code': message.value });
-				}
+				Signals.publish('code_received', { 'code': message.value });
 				break;
 			case Trigger.onTabActivation:
 				// TODO: implement or remove

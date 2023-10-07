@@ -39,7 +39,7 @@
 - [ Builds, releases and others](#tech-info)
 - [Getting Started](#getting-started)
 
-## :green_apple: Android application
+## :green_apple: Android application ( > 8.0.0 )
 
 The application is written in the Java programming language and built using Gradle. <br>
 

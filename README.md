@@ -37,31 +37,54 @@
 - [Android application](#android-application)
 - [Web extentsion (webextension-polyfill)](#web-extension)
 - [ Builds, releases and others](#tech-info)
-- [Development setup](#dev-container-setup)
-- [GitHub workflow and artifacts](#github-workflow-artifacts)
+- [Getting Started](#getting-started)
 
 ## :green_apple: Android application
 
-<img src="doc/images/app-main.png" alt="Extension" style="max-width: 300px"/>
+The application is written in the Java programming language and built using Gradle. <br>
 
-<img src="doc/images/app-reader.png" alt="Extension" style="max-width: 300px"/>
+> **Note**  
+> The app is displayed on the Huawei P9 Lite. Responsibility should be fully supported. For any imperfections write [issue](https://github.com/davidvancl/reader-connector/issues)
+
+The application consists of three parts:
+
+1. [Main activity](ReaderAndroidApp/app/src/main/java/com/example/readerandroidapp/MainActivity.java) - Main application window with the option to start and stop the websocket server and send a test message.<br>
+   <img src="doc/images/app-main.png" alt="Extension" style="max-width: 300px"/>
+2. [BarcodeCaptureActivity](ReaderAndroidApp/app/src/main/java/com/example/readerandroidapp/BarcodeCaptureActivity.java) - Window with reader mode that automatically sends data to the web extension after reading the code.<br>
+   <img src="doc/images/app-reader.png" alt="Extension" style="max-width: 300px"/>
+3. [WebSocketService](ReaderAndroidApp/app/src/main/java/com/example/readerandroidapp/WebSocketService.java) - Background service that keeps in touch with websocket clients and sends them messages (codes).
+
+Note: Application uses the [ZXing](https://github.com/journeyapps/zxing-android-embedded) library to read barcodes (CODE128, EAN8, EAN13) and QR codes.
 
 ## :strawberry: Web extentsion (webextension-polyfill)
 
-- [ ] [Popup - React](popup)
-- [ ] [Background worker](background)
-- [ ] [Content worker](conetnt)
-- [ ] [Webpack config](webpack)
-- [ ] [Packages - npm, yarn](packages)
+Extension consists of the following three parts:
+
+- [x] [Popup - React](popup)
+- [x] [Background worker](background)
+- [x] [Content worker](conetnt)
 
 ### Popup - React
 
 > **Note**  
 > Some elements may not be visible depends on browser type
 
-<img src="doc/images/extension-open.png" alt="Extension" style="max-width: 300px" />
+- Icon displayed in the browser <br>
+  <img src="doc/images/extension-open.png" alt="Extension" style="max-width: 300px" />
 
-<img src="doc/images/extension-view.png" alt="Popup view of web extension" style="max-width: 300px" />
+- Window displayed when the extension is clicked <br>
+  <img src="doc/images/extension-view.png" alt="Popup view of web extension" style="max-width: 300px" />
+
+### Background worker
+
+Script running in the browser background. It maintains a connection with the websocket server (Android app) and listens for received messages, which it forwards to the page.
+
+> **Note**
+> The script behaves differently depending on the browser type. With Chrome it runs all the time, but in Mozilla you need to force it to maintain the connection
+
+### Content worker
+
+Script included in individual pages opened in the browser. Sets up interception of messages coming from background worker. If a message arrives from a websocket, it will automatically call (Signal.publish) with scanned code.
 
 ## :hammer: Builds, releases and others
 
@@ -114,14 +137,28 @@
 </tbody>
 </table>
 
-## :wrench: Development setup
+## :wrench: Getting Started
 
-- [Profile Summary For Github](https://profile-summary-for-github.com/search)
-- [Github Readme Stats](https://github.com/anuraghazra/github-readme-stats) - Dynamically generated stats for your github readmes
+> **Warning**  
+> The steps may be different due to different browsers or phones
 
-## :floppy_disk: GitHub workflow and artifacts
+> **Note**  
+> The steps with downloading artifacts will be changed in the future to downloading from the extension store and the android app will be installed via Google Play
 
-# Contribute
+1. Download the artifact (extension and app) from the last workflow action (build). <br>
+   1.1 Open [actions](https://github.com/davidvancl/reader-connector/actions) and select the first line you see. For example: <br>
+   <img src="doc/images/last-action.png" alt="Popup view of web extension" /> <br>
+   1.2 At the bottom there is a section with artifacty download android app and extension <br>
+   <img src="doc/images/artifacts.png" alt="Popup view of web extension" /> <br>
+2. Installing a web extension <br>
+   2.1 [Mozilla] Go to [url](about:debugging#/setup) -> choose "This Firefox" -> "Load Temporary Add-on..." -> select downloaded folder (unzipped). For more information click [here](https://support.mozilla.org/en-US/kb/find-and-install-add-ons-firefox-android). <br>
+   2.2 [Chrome] Go to [url](chrome://extensions/) -> "Add extension" -> select downloaded folder (unzipped). For more information click [here](https://support.google.com/chromebook/answer/2588006?hl=en). <br>
+3. Installing android app <br>
+   3.1 It depends on the Android, but here's some [guidance on how to do it](https://www.lifewire.com/install-apk-on-android-4177185). <br>
+
+Enjoy!
+
+# :floppy_disk: Contribute
 
 Contributions are always welcome! Please create a PR to add Github Profile.
 

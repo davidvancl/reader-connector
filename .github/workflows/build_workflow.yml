@@ -100,5 +100,5 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: android-app-artifact
-          path: ./ReaderAndroidApp/app/build/outputs/apk/release/app-release-unsigned.apk
+          path: ./ReaderAndroidApp/app/build/outputs/apk/release
           retention-days: 1

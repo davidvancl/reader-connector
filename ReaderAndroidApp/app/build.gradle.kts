@@ -4,12 +4,12 @@ plugins {
 
 android {
     namespace = "com.example.readerandroidapp"
-    compileSdk = 26
+    compileSdk = 33
 
     defaultConfig {
         applicationId = "com.example.readerandroidapp"
         minSdk = 26
-        targetSdk = 26
+        targetSdk = 33
         versionCode = 1
         versionName = "1.0"
 

@@ -7,7 +7,6 @@ export class WebSocketService {
 	}
 
 	static handleOnMessageListener(event: any) {
-		console.log(event.data);
 		// Re-sends data from ws to active tab
 		browser.tabs.query({ currentWindow: true, active: true }).then((tabs) => {
 			browser.tabs.sendMessage(Number(tabs[0].id), {

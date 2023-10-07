@@ -7,6 +7,7 @@ export class ContentMessageHandler {
 			case Trigger.webSocketMessage:
 				console.log(message.value);
 				Signals.publish('code_received', { 'code': message.value });
+				console.log("OK");
 				break;
 			case Trigger.onTabActivation:
 				// TODO: implement or remove

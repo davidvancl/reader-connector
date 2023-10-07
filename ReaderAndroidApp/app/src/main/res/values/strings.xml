@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ReaderAndroidApp</string>
+    <string name="app_name">Reader App</string>
     <string name="button_text_start_scanner">START SCANNER</string>
     <string name="text_view_server_status_title">SERVER STATUS</string>
     <string name="text_view_ip_address_title">IP address</string>

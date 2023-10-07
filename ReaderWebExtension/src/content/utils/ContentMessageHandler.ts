@@ -5,7 +5,10 @@ export class ContentMessageHandler {
 		switch (message.trigger) {
 			case Trigger.webSocketMessage:
 				console.log(message.value);
+
+				// @ts-ignore: (code inside page)
 				if (Signals ?? false) {
+					// @ts-ignore: (code inside page)
 					Signals.publish('code_received', { 'code': message.value });
 				}
 				break;

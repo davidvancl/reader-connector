@@ -85,7 +85,7 @@ Script running in the browser background. It maintains a connection with the web
 
 ### Content worker
 
-Script included in individual pages opened in the browser. Sets up interception of messages coming from background worker. If a message arrives from a websocket, it will automatically call (Signal.publish) with scanned code.
+Script included in individual pages opened in the browser. Sets up interception of messages coming from background worker. If a message arrives from a websocket, it will automatically call (console.log) with scanned code.
 
 ## :hammer: Builds, releases and others
 

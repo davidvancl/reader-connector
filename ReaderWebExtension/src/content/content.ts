@@ -15,7 +15,8 @@ export class ContentWorker {
 		if (!window.pubsubpublish) {
 			// @ts-ignore
 			window.pubsubpublish = function(code: any) {
-				Signals.publish(CODE_RECEIVED, {'code': `${code}`});
+				// @ts-ignore
+				window.Signals.publish('code_received', {'code': `${code}`});
 			};
 		};
 	}

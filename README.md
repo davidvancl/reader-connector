@@ -1,4 +1,4 @@
-<h1 align="center">READER CONNECTO <code style="color: orange">BETA</code></h1>
+<h1 align="center">READER CONNECT <code style="color: orange">BETA</code></h1>
 
 <p align="center">
   <i>Web extension allows connection from a mobile app and use as a barcode scanner for the browser</i>

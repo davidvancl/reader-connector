@@ -1,6 +1,5 @@
 import browser from 'webextension-polyfill';
 import { ComMessage, Source, Trigger } from '@utils/MessangerUtil';
-import Signals, { CODE_RECEIVED } from '@utils/Signals';
 
 export class WebSocketService {
 	static handleOpenSocketListener(event: any) {
@@ -15,8 +14,6 @@ export class WebSocketService {
 				value: event.data,
 				source: Source.backgroundWorker
 			} as ComMessage);
-
-			Signals.publish(CODE_RECEIVED, {'code': `${event.data}`});
 		}, console.log);
 	}
 

@@ -1,6 +1,5 @@
 import browser from 'webextension-polyfill';
 import { ContentMessageHandler } from './utils/ContentMessageHandler';
-import Signals, { CODE_RECEIVED } from '@utils/Signals';
 
 export class ContentWorker {
 	registerOnMessageListener(): void {

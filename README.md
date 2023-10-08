@@ -1,4 +1,4 @@
-<h1 align="center">READER CONNECTOR</h1>
+<h1 align="center">READER CONNECTOR ![BETA]() `#FFBF00`</h1>
 <p align="center">
   <i>Web extension allows connection from a mobile app and use as a barcode scanner for the browser</i>
 </p>

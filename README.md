@@ -1,4 +1,5 @@
-<h1 align="center">READER CONNECTOR ```diff ! BETA ```</h1>
+<h1 align="center">READER CONNECTOR</h1>
+```diff ! BETA ```
 <p align="center">
   <i>Web extension allows connection from a mobile app and use as a barcode scanner for the browser</i>
 </p>

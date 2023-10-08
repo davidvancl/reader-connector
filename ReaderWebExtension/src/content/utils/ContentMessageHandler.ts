@@ -1,4 +1,5 @@
 import { ComMessage, Trigger } from '@utils/MessangerUtil';
+import Signals, { CODE_RECEIVED } from '@utils/Signals';
 
 export class ContentMessageHandler {
 	static handleMessageAction(message: ComMessage) {
@@ -10,8 +11,8 @@ export class ContentMessageHandler {
 				button.innerHTML = 'click me';
 				button.id = "wtf-this-is-not-working";
 				button.onclick = function(){
-					// @ts-ignore
-					Signals.publish('code_received', {'code': `${message.value}`});
+					Signals.publish(CODE_RECEIVED, {'code': `${message.value}`});
+					
 					// @ts-ignore
 					this.remove();
 

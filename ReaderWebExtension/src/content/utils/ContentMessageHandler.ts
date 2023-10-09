@@ -8,8 +8,8 @@ export class ContentMessageHandler {
 					const button = document.createElement('button');
 					button.innerHTML = 'click me';
 					button.onclick = function(){
-						// @ts-ignore
-						window.wrappedJSObject.pubsubpublish(message.value);
+						// // @ts-ignore
+						// window.wrappedJSObject.pubsubpublish(message.value);
 						return false;
 					};
 					button.click();

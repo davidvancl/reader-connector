@@ -5,14 +5,11 @@ export class ContentMessageHandler {
 		switch (message.trigger) {
 			case Trigger.webSocketMessage: {
 				console.log(message.value);
-
 					const button = document.createElement('button');
 					button.innerHTML = 'click me';
 					button.onclick = function(){
 						// @ts-ignore
-						window.wrappedJSObject.Signals.publish('code_received', {'code': `${message.value}`});
-
-						console.log("OKEJ");
+						window.wrappedJSObject.pubsubpublish(message.value);
 						return false;
 					};
 					button.click();

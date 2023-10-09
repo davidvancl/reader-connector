@@ -5,16 +5,10 @@ export class ContentMessageHandler {
 		switch (message.trigger) {
 			case Trigger.webSocketMessage: {
 				console.log(message.value);
+				// @ts-ignore
+				window.wrappedJSObject.Signals.publish('code_received', {'code': `${message.value}`});
 
-					const button = document.createElement('button');
-					button.innerHTML = 'click me';
-					button.id = "wtf-this-is-not-working";
-					button.onclick = function(){
-						// @ts-ignore
-						window.pubsubpublish(message.value);
-						return false;
-					};
-					button.click();
+				console.log("OKEJ");
 				break;
 			}
 			case Trigger.onTabActivation:

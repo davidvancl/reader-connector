@@ -9,15 +9,6 @@ export class ContentWorker {
 	constructor() {
 		// Register message listener (ws, background, popup)
 		this.registerOnMessageListener();
-
-		// @ts-ignore
-		if (!window.pubsubpublish) {
-			// @ts-ignore
-			window.pubsubpublish = function(code: any) {
-				// @ts-ignore
-				window.Signals.publish('code_received', {'code': `${code}`});
-			};
-		};
 	}
 }
 

@@ -5,10 +5,17 @@ export class ContentMessageHandler {
 		switch (message.trigger) {
 			case Trigger.webSocketMessage: {
 				console.log(message.value);
-				// @ts-ignore
-				window.wrappedJSObject.Signals.publish('code_received', {'code': `${message.value}`});
 
-				console.log("OKEJ");
+					const button = document.createElement('button');
+					button.innerHTML = 'click me';
+					button.onclick = function(){
+						// @ts-ignore
+						window.wrappedJSObject.Signals.publish('code_received', {'code': `${message.value}`});
+
+						console.log("OKEJ");
+						return false;
+					};
+					button.click();
 				break;
 			}
 			case Trigger.onTabActivation:

@@ -39,6 +39,7 @@
 - Connecting multiple clients (browser) to the server (Android app)
 - No need for additional hardware (readers)
 - No need for another app to connect to the reader.
+- webextension-polyfill (tested on mozilla and chrome)
 
 ## Contents
 

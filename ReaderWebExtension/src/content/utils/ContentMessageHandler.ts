@@ -4,15 +4,10 @@ export class ContentMessageHandler {
 	static handleMessageAction(message: ComMessage) {
 		switch (message.trigger) {
 			case Trigger.webSocketMessage: {
-				console.log(message.value);
-					const button = document.createElement('button');
-					button.innerHTML = 'click me';
-					button.onclick = function(){
-						// // @ts-ignore
-						// window.wrappedJSObject.pubsubpublish(message.value);
-						return false;
-					};
-					button.click();
+				const actualCode = `window.Signals.publish('code_received', {'code': '${message.value}'});`;
+				document.documentElement.setAttribute('onreset', actualCode);
+				document.documentElement.dispatchEvent(new CustomEvent('reset'));
+				document.documentElement.removeAttribute('onreset');
 				break;
 			}
 			case Trigger.onTabActivation:

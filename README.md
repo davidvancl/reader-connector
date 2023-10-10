@@ -33,6 +33,13 @@
 > **Warning**  
 > Tested only the connection between the Android app and the web extension on the local network
 
+## Key features
+
+- For all sites (pubsub for implemented sites only)
+- Connecting multiple clients (browser) to the server (Android app)
+- No need for additional hardware (readers)
+- No need for another app to connect to the reader.
+
 ## Contents
 
 - [Android application](#android-application)
@@ -85,9 +92,11 @@ Script running in the browser background. It maintains a connection with the web
 
 ### Content worker
 
-Script included in individual pages opened in the browser. Sets up interception of messages coming from background worker. If a message arrives from a websocket, it will automatically call (window.Signals.publish) with scanned code.
+Script included in individual pages opened in the browser. Sets up interception of messages coming from background worker. If a message arrives from a websocket, it will automatically call (window.Signals.publish) with scanned code. <br>
 
-Data is passed to the page using publish and subscribe methods from the library [pubsub-js](https://www.npmjs.com/package/pubsub-js). Just set Signals to Window globally and subscribe to the 'code_received' topic anywhere in the app. e.g. [example](ReaderSimpleWeb/src/App.tsx) (Signals events defined in Signal.ts)
+Data is passed to the page using publish and subscribe methods from the library [pubsub-js](https://www.npmjs.com/package/pubsub-js). Just set Signals to Window globally and subscribe to the 'code_received' topic anywhere in the app. e.g. [example](ReaderSimpleWeb/src/App.tsx) (Signals events defined in Signal.ts) <br>
+
+<img src="doc/images/simple-web-app.png" alt="Extension" style="max-width: 300px" />
 
 ## :hammer: Builds, releases and others
 

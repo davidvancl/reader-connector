@@ -1,0 +1,23 @@
+name: Build and Deploy simple web page
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./ReaderSimpleWeb
+    
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Build and Deploy React app to GitHub Pages
+      uses: omkartapale/react-deployment-gh-pages@v1.0.0
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.

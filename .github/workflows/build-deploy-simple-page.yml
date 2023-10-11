@@ -28,7 +28,7 @@ jobs:
           node-version: "18.x"
 
       - name: Install packages
-        run: npm ci
+        run: npm i
 
       - name: Run build for simple web page
         run: npm run build

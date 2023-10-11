@@ -158,13 +158,13 @@ Data is passed to the page using publish and subscribe methods from the library 
 > **Note**  
 > The steps with downloading artifacts will be changed in the future to downloading from the extension store and the android app will be installed via Google Play
 
-1. Download the artifact (extension and app) from the last workflow action (build). <br>
+1. [Chrome and android] Download the artifact (extension and app) from the last workflow action (build). <br>
    1.1 Open [actions](https://github.com/davidvancl/reader-connector/actions) and select the first line you see. For example: <br>
    <img src="doc/images/last-action.png" alt="Popup view of web extension" /> <br>
    1.2 At the bottom there is a section with artifacty download android app and extension <br>
    <img src="doc/images/artifacts.png" alt="Popup view of web extension" /> <br>
 2. Installing a web extension <br>
-   2.1 [Mozilla] Go to [url](about:debugging#/setup) -> choose "This Firefox" -> "Load Temporary Add-on..." -> select downloaded folder (unzipped). For more information click [here](https://support.mozilla.org/en-US/kb/find-and-install-add-ons-firefox-android). <br>
+   2.1 [Mozilla] Visit [extension store](https://addons.mozilla.org/en-US/firefox/addon/reader-connector/?fbclid=IwAR0fjh2ZOKmr_8RaBFnvHkS3RyOf7FB87FPNWP6EmFClBWCC-DKbwT3wy7Q)<br>
    2.2 [Chrome] Go to [url](chrome://extensions/) -> "Add extension" -> select downloaded folder (unzipped). For more information click [here](https://support.google.com/chromebook/answer/2588006?hl=en). <br>
 3. Installing android app <br>
    3.1 It depends on the Android, but here's some [guidance on how to do it](https://www.lifewire.com/install-apk-on-android-4177185). <br>

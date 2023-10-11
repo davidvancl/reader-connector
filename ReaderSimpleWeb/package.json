@@ -2,6 +2,7 @@
   "name": "reader-simple-web",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://davidvancl.github.io/reader-connector",
   "dependencies": {
     "pubsub-js": "^1.9.4",
     "react": "^18.2.0",

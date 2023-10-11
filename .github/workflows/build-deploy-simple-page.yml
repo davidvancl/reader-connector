@@ -33,10 +33,7 @@ jobs:
       - name: Run build for simple web page
         run: npm run build
 
-      - name: Deploy page
-        uses: crazy-max/ghaction-github-pages@v1
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          target_branch: gh-pages
-          build_dir: ./ReaderSimpleWeb/build
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          folder: ./ReaderSimpleWeb/build

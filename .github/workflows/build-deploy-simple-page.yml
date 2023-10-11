@@ -6,9 +6,15 @@ on:
   pull_request:
     branches: ["main"]
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
+
     defaults:
       run:
         working-directory: ./ReaderSimpleWeb
@@ -16,5 +22,18 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Build and Deploy React app to GitHub Pages
-        uses: omkartapale/react-deployment-gh-pages@v1.0.0
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18.x"
+
+      - name: Install packages
+        run: npm ci
+
+      - name: Run build for simple web page
+        run: npm run build
+
+      - id: build-publish
+        uses: bitovi/github-actions-react-to-github-pages@v1.2.0
+        with:
+          path: ./ReaderSimpleWeb/build

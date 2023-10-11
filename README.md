@@ -131,7 +131,7 @@ Data is passed to the page using publish and subscribe methods from the library 
     <td>Docs</td>
         <td>
             <img src="https://img.shields.io/github/last-commit/davidvancl/reader-connector/gh-pages.svg" alt="gh-pages">
-            <img src="https://img.shields.io/website-up-down-green-red/https/davidvancl/reader-connector.org.svg" alt="site">
+            <img src="https://img.shields.io/website-up-down-green-red/https/davidvancl.github.io/reader-connector.svg" alt="site">
         </td>
     </tr>
     <tr>

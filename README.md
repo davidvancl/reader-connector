@@ -168,7 +168,7 @@ Data is passed to the page using publish and subscribe methods from the library 
    2.2 [Chrome] Go to [url](chrome://extensions/) -> "Add extension" -> select downloaded folder (unzipped). For more information click [here](https://support.google.com/chromebook/answer/2588006?hl=en). <br>
 3. Installing android app <br>
    3.1 It depends on the Android, but here's some [guidance on how to do it](https://www.lifewire.com/install-apk-on-android-4177185). <br>
-4. If you want you can test erxtension with app on [this site](https://davidvancl.github.io/reader-connector/)
+4. If you want you can test extension with app on [this site](https://davidvancl.github.io/reader-connector/)
 
 Enjoy!
 

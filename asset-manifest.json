@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/reader-connector/static/css/main.073c9b0a.css",
+    "main.js": "/reader-connector/static/js/main.d29209a5.js",
+    "index.html": "/reader-connector/index.html",
+    "main.073c9b0a.css.map": "/reader-connector/static/css/main.073c9b0a.css.map",
+    "main.d29209a5.js.map": "/reader-connector/static/js/main.d29209a5.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.d29209a5.js"
+  ]
+}

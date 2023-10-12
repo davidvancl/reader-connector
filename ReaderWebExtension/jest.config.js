@@ -4,6 +4,7 @@ module.exports = {
   moduleNameMapper: {
     '@components/(.*)$': '<rootDir>/src/components/$1',
     '@utils/(.*)$': '<rootDir>/src/utils/$1',
+    '@contexts/(.*)$': '<rootDir>/src/contexts/$1',
     '@/(.*)$': '<rootDir>/src/$1',
     '^.+\\.(jpg|jpeg|png|gif|svg)$':'<rootDir>/tests/mocks/fileMock.ts',
     '^.+\\.(css|less|scss|sass)$': '<rootDir>/tests/mocks/styleMock.ts',

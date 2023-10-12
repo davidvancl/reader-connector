@@ -38,7 +38,7 @@ function QuickActionComponent(props: IProps) {
 							{props.actionTitle ?? ''}
 						</button>
 					) : (
-						''
+						<></>
 					)}
 				</div>
 				<span

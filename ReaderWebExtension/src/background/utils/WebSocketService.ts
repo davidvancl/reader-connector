@@ -3,7 +3,8 @@ import { ComMessage, Source, Trigger } from '@utils/MessangerUtil';
 
 export class WebSocketService {
 	static handleOpenSocketListener(event: any) {
-		// socket.send("Hello Server!");
+		// TODO: log event
+		console.log(event);
 	}
 
 	static handleOnMessageListener(event: any) {
@@ -21,7 +22,9 @@ export class WebSocketService {
 		browser.storage.local.get('web_socket_server_ip').then(function (value) {
 			if (value.web_socket_server_ip !== undefined && value.web_socket_server_ip !== null) {
 				// listent to ws server requests
-				const socket = new WebSocket(`ws://${value.web_socket_server_ip}:8887`);
+				const address = `ws://${value.web_socket_server_ip}:${process.env.WEBSOCKET_PORT}`;
+				const socket = new WebSocket(address);
+				console.log(`Client listening: ${address}`);
 
 				// Connection opened
 				socket.addEventListener('open', WebSocketService.handleOpenSocketListener);

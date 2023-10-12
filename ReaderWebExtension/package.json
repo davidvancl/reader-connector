@@ -22,6 +22,7 @@
     "babel-loader": "^9.1.2",
     "copy-webpack-plugin": "^11.0.0",
     "core-js": "^3.30.1",
+    "dotenv-webpack": "^8.0.1",
     "eslint": "^8.39.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-config-react-app": "^7.0.1",
@@ -40,9 +41,9 @@
     "webpack-dev-server": "^4.13.3"
   },
   "scripts": {
-    "dev": "webpack serve --mode development",
-    "build": "webpack --mode production --progress",
-    "build-chrome": "webpack --mode production --progress --env=chrome",
+    "dev": "webpack serve --mode development --env development",
+    "build": "webpack --mode production --progress --env production",
+    "build-chrome": "webpack --mode production --progress --env=chrome --env production",
     "tscheck": "tsc",
     "lint": "eslint --ext .js,.ts,.jsx,.tsx src",
     "format": "yarn run lint --fix & yarn prettier --write 'src/**/*.{js,jsx,ts,tsx}'",
@@ -50,7 +51,10 @@
     "test-ci": "jest --ci --coverage --testLocationInResults"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
     "@iconscout/react-unicons": "^2.0.2",
+    "@mui/material": "^5.14.13",
     "bootstrap": "^5.2.3",
     "css-loader": "^6.7.3",
     "pubsub-js": "^1.9.4",

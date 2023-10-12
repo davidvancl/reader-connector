@@ -8,8 +8,15 @@ jest.mock('webextension-polyfill', () => { return { __esModule: true, default: b
 
 
 describe("Test component: PopupComponent", () => {
+    let languageGetter;
+
+    beforeEach(() => {
+        languageGetter = jest.spyOn(navigator, 'userAgent', 'get')
+    })
 
     it("Test with browser mock: renders correctly with data", async () => {
+        languageGetter.mockReturnValue('firefox');
+
         await act(async () => render(<PopupComponent />));
 
         // Checks body

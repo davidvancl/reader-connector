@@ -6,7 +6,7 @@
             "ESNext",
             "dom"
         ],
-        "jsx": "react",
+        "jsx": "react-jsx",
         "noEmit": true,
         "sourceMap": true,
         "strict": true,
@@ -25,6 +25,9 @@
             ],
             "@assets/*": [
                 "assets/*"
+            ],
+            "@contexts/*": [
+                "contexts/*"
             ]
         },
         "typeRoots": [

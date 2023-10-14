@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import Signals from './Signals';
+import Button from 'react-bootstrap/Button';
+import Alert from 'react-bootstrap/Alert';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 declare global {
   interface Window { Signals: any; }
@@ -25,8 +28,10 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src='./logo.svg' className="App-logo" alt="logo" />
-        <p>{code ?? 'Scan barcode or qrcode!'}</p>
-        <button onClick={sendTestCode}>click here</button>
+        <Alert key={'info'} variant={'info'}>
+          {code !== '' ? code : 'Scan barcode or qrcode!'}
+        </Alert>
+        <Button variant="outline-warning" onClick={sendTestCode}>Publish topic with test code</Button>
       </header>
     </div>
   );

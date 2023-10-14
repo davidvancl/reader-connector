@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/reader-connector/static/css/main.db798329.css",
-    "main.js": "/reader-connector/static/js/main.973e806e.js",
+    "main.js": "/reader-connector/static/js/main.5bfc77c5.js",
     "index.html": "/reader-connector/index.html",
     "main.db798329.css.map": "/reader-connector/static/css/main.db798329.css.map",
-    "main.973e806e.js.map": "/reader-connector/static/js/main.973e806e.js.map"
+    "main.5bfc77c5.js.map": "/reader-connector/static/js/main.5bfc77c5.js.map"
   },
   "entrypoints": [
     "static/css/main.db798329.css",
-    "static/js/main.973e806e.js"
+    "static/js/main.5bfc77c5.js"
   ]
 }

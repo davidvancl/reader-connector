@@ -1,33 +1,33 @@
-import browser from 'webextension-polyfill';
-import { ComMessage, Source, Trigger } from '@utils/MessangerUtil';
+import { Source, Trigger } from '@utils/MessangerUtil';
+import { getStorageValue, reloadExtension, sendTabMessage } from '@utils/BrowserUtil';
 
 export class WebSocketService {
 	static handleOpenSocketListener(event: any) {
-		// TODO: log event
-		console.log(event);
+		console.log('Connection opened for:', event);
+	}
+
+	static handleCloseSocketListener(event: any) {
+		console.log('Connection closed for:', event);
 	}
 
 	static handleOnMessageListener(event: any) {
 		// Re-sends data from ws to active tab
-		browser.tabs.query({ currentWindow: true, active: true }).then((tabs) => {
-			browser.tabs.sendMessage(Number(tabs[0].id), {
-				trigger: Trigger.webSocketMessage,
-				value: event.data,
-				source: Source.backgroundWorker
-			} as ComMessage);
-		}, console.log);
+		sendTabMessage(event.data, Trigger.webSocketMessage, Source.backgroundWorker);
 	}
 
 	static createWebSocketServerWithListeners() {
-		browser.storage.local.get('web_socket_server_ip').then(function (value) {
-			if (value.web_socket_server_ip !== undefined && value.web_socket_server_ip !== null) {
+		getStorageValue('web_socket_server_ip', (value: any) => {
+			if (value !== undefined && value !== null) {
 				// listent to ws server requests
-				const address = `ws://${value.web_socket_server_ip}:${process.env.WEBSOCKET_PORT}`;
+				const address = `ws://${value}:${process.env.WEBSOCKET_PORT}`;
 				const socket = new WebSocket(address);
-				console.log(`Client listening: ${address}`);
+				console.log(`Websocket client listening: ${address}`);
 
 				// Connection opened
 				socket.addEventListener('open', WebSocketService.handleOpenSocketListener);
+
+				// Connection closed
+				socket.addEventListener('close', WebSocketService.handleCloseSocketListener);
 
 				// Listen for messages
 				socket.addEventListener('message', WebSocketService.handleOnMessageListener);
@@ -37,11 +37,11 @@ export class WebSocketService {
 		});
 
 		// Auto reloads background script and refreshs connection
-		browser.storage.local.get('keep_connection_alive').then(function (value) {
-			if (value.keep_connection_alive === true) {
+		getStorageValue('keep_connection_alive', (value: any) => {
+			if (value) {
 				setTimeout(() => {
-					browser.runtime.reload();
-				}, 25000);
+					reloadExtension();
+				}, Number(process.env.MOZILLA_RELOAD_INTERVAL));
 			}
 		});
 	}

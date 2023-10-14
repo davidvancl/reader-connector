@@ -1,5 +1,5 @@
+import { sendWorkerMessage } from '@utils/BrowserUtil';
 import { ComMessage, Source, Trigger } from '@utils/MessangerUtil';
-import browser from 'webextension-polyfill';
 
 export class BackgroundMessageHandler {
 	static handleMessageAction(message: ComMessage) {
@@ -10,15 +10,6 @@ export class BackgroundMessageHandler {
 		if (!activeInfo.tabId) {
 			return;
 		}
-
-		browser.tabs
-			.sendMessage(activeInfo.tabId, {
-				trigger: Trigger.onTabActivation,
-				value: 'Message action executed from bacground worker.',
-				source: Source.backgroundWorker
-			} as ComMessage)
-			.catch((e) => {
-				console.log(e);
-			});
+		sendWorkerMessage('Worker detected the change of the active window.', Trigger.onTabActivation, Source.backgroundWorker);
 	}
 }

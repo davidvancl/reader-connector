@@ -12,14 +12,18 @@ function ServerSettingsComponent() {
 	const [ippt4, setIppt4] = useState<IOption>({ value: '', label: '' });
 
 	const [keepAlive, setKeepAlive] = useState<boolean>(false);
+	const [disablePageAlerts, setDisablePageAlerts] = useState<boolean>(false);
 	const { setAlert } = useAlert();
 
 	useEffect(() => {
 		getStorageValue(
 			'web_socket_server_ip',
 			(value: any) => {
-				const ipParts = String(value).split('.');
+				if (value === undefined) {
+					return;
+				}
 
+				const ipParts = String(value).split('.');
 				setIppt1({ value: ipParts[0] ?? '', label: ipParts[0] ?? '' });
 				setIppt2({ value: ipParts[1] ?? '', label: ipParts[1] ?? '' });
 				setIppt3({ value: ipParts[2] ?? '', label: ipParts[2] ?? '' });
@@ -35,10 +39,23 @@ function ServerSettingsComponent() {
 			},
 			setAlert
 		);
+
+		getStorageValue(
+			'disable_page_alerts',
+			(value: any) => {
+				setDisablePageAlerts(Boolean(value));
+			},
+			setAlert
+		);
 	}, []);
 
 	const handleSetOnClick = () => {
 		saveStorageValue('web_socket_server_ip', `${ippt1.value}.${ippt2.value}.${ippt3.value}.${ippt4.value}`, setAlert);
+	};
+
+	const handleDisablePageAlertChange = (e: any) => {
+		setDisablePageAlerts(!disablePageAlerts);
+		saveStorageValue('disable_page_alerts', !disablePageAlerts, setAlert);
 	};
 
 	const handleKeepAliveChange = (e: any) => {
@@ -115,6 +132,18 @@ function ServerSettingsComponent() {
 			) : (
 				''
 			)}
+
+			<div className='form-check form-switch'>
+				<input
+					className='form-check-input'
+					data-testid='disable_page_alerts'
+					type='checkbox'
+					role='switch'
+					checked={disablePageAlerts}
+					onChange={handleDisablePageAlertChange}
+				/>
+				<label className='form-check-label'>Disable page alerts</label>
+			</div>
 		</Container>
 	);
 }

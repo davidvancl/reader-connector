@@ -5,7 +5,7 @@ import '@assets/css/popup.css';
 import AlertComponent from './elements/AlertComponent';
 import useAlert from '@contexts/hooks/UseAlert';
 import * as Unicons from '@iconscout/react-unicons';
-import { Trigger } from '@utils/MessangerUtil';
+import { Source, Trigger } from '@utils/MessangerUtil';
 import QuickActionComponent from './elements/QuickActionComponent';
 import { sendTabMessage, sendWorkerMessage } from '@utils/BrowserUtil';
 
@@ -51,7 +51,7 @@ function CommunicationComponent(props: IProps) {
 							setWorkerMessage(value);
 						}}
 						callback={() => {
-							sendWorkerMessage(workerMessage, Trigger.plainTextMessage, setAlert);
+							sendWorkerMessage(workerMessage, Trigger.plainTextMessage, Source.popupWorker, setAlert);
 							setWorkerMessage('');
 						}}
 					/>
@@ -66,7 +66,7 @@ function CommunicationComponent(props: IProps) {
 							setClientMessage(value);
 						}}
 						callback={() => {
-							sendTabMessage(clientMessage, Trigger.plainTextMessage, setAlert);
+							sendTabMessage(clientMessage, Trigger.plainTextMessage, Source.popupWorker, setAlert);
 							setClientMessage('');
 						}}
 					/>

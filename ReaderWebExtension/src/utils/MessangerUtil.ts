@@ -2,6 +2,7 @@ export enum Trigger {
 	// Regular actions
 	onTabActivation = 'onTabActivation',
 	contentConfirmAction = 'contentConfirmAction',
+	plainTextMessage = 'plainTextMessage',
 
 	// WebSocket actions
 	startWebSocketClient = 'startWebSocketClient',

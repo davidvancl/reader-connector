@@ -36,6 +36,7 @@
     },
     "include": [
         "src",
-        "./tests/setupTests.ts"
+        "./tests/setupTests.ts",
+        "./tests/setupFiles.ts"
     ]
 }

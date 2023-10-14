@@ -35,6 +35,10 @@ module.exports = env => {
                 }
             ]
         },
+        performance: {
+            maxEntrypointSize: 1024000,
+            maxAssetSize: 1024000
+        },
         resolve: {
             extensions: ['.tsx', '.ts', '.jsx', '.js'],
             alias: {

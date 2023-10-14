@@ -10,9 +10,9 @@ module.exports = {
     '^.+\\.(css|less|scss|sass)$': '<rootDir>/tests/mocks/styleMock.ts',
     '(assets|models|services)': '<rootDir>/tests/mocks/fileMock.ts',
   },
-  setupFiles: ["jest-webextension-mock"],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   modulePaths: ['<rootDir>'],
   testEnvironment: 'jsdom',
-  setupFilesAfterEnv: ['./tests/setupTests.ts']
+  setupFilesAfterEnv: ['./tests/setupTests.ts'],
+  setupFiles: ['./tests/setupFiles.ts']
 };

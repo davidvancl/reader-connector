@@ -28,7 +28,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src='./logo.svg' className="App-logo" alt="logo" />
-        <Alert key={'info'} variant={'info'}>
+        <Alert key={'info'} className='mb-3' variant={'info'}>
           {code !== '' ? code : 'Scan barcode or qrcode!'}
         </Alert>
         <Button variant="outline-warning" onClick={sendTestCode}>Publish topic with test code</Button>

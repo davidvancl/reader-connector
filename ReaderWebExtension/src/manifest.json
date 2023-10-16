@@ -1,7 +1,7 @@
 {
     "name": "Reader connector",
     "author": "David Vancl",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "manifest_version": 3,
     "description": "Web extension allows connect from mobile app and use it as bar code reader",
     "options_ui": {

@@ -4,9 +4,11 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
+
 import org.java_websocket.WebSocket;
 import org.java_websocket.handshake.ClientHandshake;
 import org.java_websocket.server.WebSocketServer;
+
 import java.net.InetSocketAddress;
 import java.util.ArrayList;
 import java.util.function.Function;
@@ -63,7 +65,10 @@ public class WebSocketService extends Service {
 
             @Override
             public void onMessage(WebSocket conn, String message) {
-
+                castDataToMainActivity((Intent localIntent) -> {
+                    localIntent.putExtra("CLIENT_MESSAGE", message);
+                    return localIntent;
+                });
             }
 
             @Override

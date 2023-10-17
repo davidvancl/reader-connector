@@ -1,8 +1,11 @@
 package com.example.readerandroidapp;
 
+import android.annotation.SuppressLint;
+import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -11,6 +14,8 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
+
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.ResultPoint;
 import com.google.zxing.client.android.BeepManager;
@@ -19,6 +24,7 @@ import com.journeyapps.barcodescanner.BarcodeResult;
 import com.journeyapps.barcodescanner.CaptureActivity;
 import com.journeyapps.barcodescanner.DecoratedBarcodeView;
 import com.journeyapps.barcodescanner.DefaultDecoderFactory;
+
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -49,6 +55,7 @@ public class BarcodeCaptureActivity extends CaptureActivity {
         beepManager = new BeepManager(this);
     }
 
+    @SuppressLint("UnspecifiedRegisterReceiverFlag")
     @Override
     protected void onResume() {
         super.onResume();
@@ -57,6 +64,10 @@ public class BarcodeCaptureActivity extends CaptureActivity {
         if (Utils.isMyServiceRunning(WebSocketService.class, this)) {
             bindService(new Intent(this, WebSocketService.class), mConnection, Context.BIND_AUTO_CREATE);
         }
+
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction("com.example.readerandroidapp");
+        registerReceiver(broadcastReceiver, intentFilter);
     }
 
     @Override
@@ -67,6 +78,7 @@ public class BarcodeCaptureActivity extends CaptureActivity {
         if (Utils.isMyServiceRunning(WebSocketService.class, this)) {
             unbindService(mConnection);
         }
+        unregisterReceiver(broadcastReceiver);
     }
 
     public void onPauseOrResumeClick(View v) {
@@ -138,6 +150,15 @@ public class BarcodeCaptureActivity extends CaptureActivity {
         public void onServiceConnected(ComponentName name, IBinder service) {
             mBounded = true;
             webSocketService = ((WebSocketService.LocalBinder) service).getInstance();
+        }
+    };
+
+    BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (intent.hasExtra("CLIENT_MESSAGE")) {
+                Toast.makeText(context, intent.getStringExtra("CLIENT_MESSAGE"), Toast.LENGTH_SHORT).show();
+            }
         }
     };
 }

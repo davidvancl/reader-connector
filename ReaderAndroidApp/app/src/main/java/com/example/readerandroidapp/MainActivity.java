@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -120,6 +121,10 @@ public class MainActivity extends AppCompatActivity {
     BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
+            if (intent.hasExtra("CLIENT_MESSAGE")) {
+                Toast.makeText(context, intent.getStringExtra("CLIENT_MESSAGE"), Toast.LENGTH_SHORT).show();
+            }
+
             if (Objects.equals(intent.getStringExtra("CONNECTION_STATUS"), "ALIVE")) {
                 setStatusVisualisation(true);
             }

@@ -1,11 +1,8 @@
 import { Source, Trigger } from '@utils/MessangerUtil';
 import { getStorageValue, reloadExtension, sendTabMessage } from '@utils/BrowserUtil';
+import Signals from '@utils/Signals';
 
 export class WebSocketService {
-	static handleOpenSocketListener(event: any) {
-		console.log('Connection opened for:', event);
-	}
-
 	static handleCloseSocketListener(event: any) {
 		console.log('Connection closed for:', event);
 	}
@@ -24,7 +21,13 @@ export class WebSocketService {
 				console.log(`Websocket client listening: ${address}`);
 
 				// Connection opened
-				socket.addEventListener('open', WebSocketService.handleOpenSocketListener);
+				socket.addEventListener('open', (event: any) => {
+					console.log('Connection opened for:', event);
+
+					Signals.subscribe('server_message', (msg: any, data: any) => {
+						socket.send(data.message);
+					});
+				});
 
 				// Connection closed
 				socket.addEventListener('close', WebSocketService.handleCloseSocketListener);

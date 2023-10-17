@@ -16,6 +16,7 @@ interface IProps {
 function CommunicationComponent(props: IProps) {
 	const [clientMessage, setClientMessage] = useState<string>('');
 	const [workerMessage, setWorkerMessage] = useState<string>('');
+	const [serverMessage, setServerMessage] = useState<string>('');
 	const { setAlert } = useAlert();
 
 	return (
@@ -68,6 +69,21 @@ function CommunicationComponent(props: IProps) {
 						callback={() => {
 							sendTabMessage(clientMessage, Trigger.plainTextMessage, Source.popupWorker, setAlert);
 							setClientMessage('');
+						}}
+					/>
+
+					<QuickActionComponent
+						dataTestid='popup-server'
+						title='Server message'
+						actionTitle='Send'
+						description='Sends message to server'
+						icon={<Unicons.UilServer style={{ height: 32, width: 32 }} />}
+						inputCallback={(value: string) => {
+							setServerMessage(value);
+						}}
+						callback={() => {
+							sendWorkerMessage(serverMessage, Trigger.webSocketMessage, Source.popupWorker, setAlert);
+							setServerMessage('');
 						}}
 					/>
 				</div>

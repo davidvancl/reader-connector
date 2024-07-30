@@ -3,8 +3,6 @@ name: Build and upload artifacts
 on:
   push:
     branches: ["main"]
-  pull_request:
-    branches: ["main"]
 
 jobs:
   build-webextension:
